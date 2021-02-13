@@ -8,6 +8,7 @@ import AddEmployee from "./components/AddEmployee";
 import Header from "./components/Header";
 import DeleteMenu from "./components/DeleteMenu";
 import UpdateMenu from "./components/UpdateMenu";
+import Footer from "./components/Footer";
 
 function App() {
   const [firstName, setFirstName] = useState("");
@@ -178,6 +179,7 @@ function App() {
           setNewSalary={setNewSalary}
         />
       </div>
+      <Footer />
     </div>
   );
 }

@@ -67,7 +67,9 @@ function UpdateMenu({ setNewSalary, updateEmployeeSalary, rowID }) {
       >
         <StyledMenuItem>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <Typography variant="body1">Update</Typography>
+            <Typography variant="body1" style={{ marginLeft: 15 }}>
+              Update
+            </Typography>
             <TextField
               id="filled-update-salary"
               label="New Salary"
@@ -155,8 +157,8 @@ function UpdateMenu({ setNewSalary, updateEmployeeSalary, rowID }) {
           </div>
           <ListItemIcon>
             <CheckCircleIcon
-              fontSize="small"
-              style={{ marginLeft: 20 }}
+              fontSize="large"
+              style={{ marginLeft: 20, color: "green" }}
               onClick={() => {
                 updateEmployeeSalary(rowID);
               }}
