@@ -4,12 +4,12 @@ import {
   IconButton,
   Menu,
   MenuItem,
-  ListItemIcon,
+  // ListItemIcon,
   ListItemText,
 } from "@material-ui/core/";
 import DeleteIcon from "@material-ui/icons/Delete";
-import CancelIcon from "@material-ui/icons/Cancel";
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+// import CancelIcon from "@material-ui/icons/Cancel";
+// import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
 const StyledMenu = withStyles({
   paper: {
@@ -34,7 +34,7 @@ const StyledMenu = withStyles({
 const StyledMenuItem = withStyles((theme) => ({
   root: {
     "&:focus": {
-      backgroundColor: theme.palette.primary.main,
+      backgroundColor: theme.palette.secondary.main,
       "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
         color: theme.palette.common.white,
       },
@@ -59,7 +59,7 @@ function DeleteMenu({ deleteEmployee, rowID }) {
         aria-controls="customized-menu"
         aria-haspopup="true"
         variant="contained"
-        // color="primary"
+        color="secondary"
         onClick={handleClick}
       >
         <DeleteIcon />
@@ -76,17 +76,17 @@ function DeleteMenu({ deleteEmployee, rowID }) {
             deleteEmployee(rowID);
           }}
         >
-          <ListItemIcon>
+          {/* <ListItemIcon>
             <CheckCircleIcon fontSize="small" />
-          </ListItemIcon>
+          </ListItemIcon> */}
           <ListItemText primary="Delete" />
         </StyledMenuItem>
-        <StyledMenuItem>
+        {/* <StyledMenuItem>
           <ListItemIcon>
             <CancelIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText primary="Cancel" />
-        </StyledMenuItem>
+        </StyledMenuItem> */}
       </StyledMenu>
     </div>
   );

@@ -7,6 +7,7 @@ import DataTable from "./components/DataTable";
 import AddEmployee from "./components/AddEmployee";
 import Header from "./components/Header";
 import DeleteMenu from "./components/DeleteMenu";
+import UpdateMenu from "./components/UpdateMenu";
 
 function App() {
   const [firstName, setFirstName] = useState("");
@@ -173,6 +174,8 @@ function App() {
           updateEmployeeSalary={updateEmployeeSalary}
           deleteEmployee={deleteEmployee}
           DeleteMenu={DeleteMenu}
+          UpdateMenu={UpdateMenu}
+          setNewSalary={setNewSalary}
         />
       </div>
     </div>
