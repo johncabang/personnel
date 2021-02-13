@@ -11,4 +11,4 @@
 
 ### Screenshots
 
-!["personnel"](https://github.com/johncabang/personnel/blob/master/docs/personnel-001.png?raw=true)
+!["personnel"](https://github.com/johncabang/personnel/blob/main/docs/personnel-001.png?raw=true)
