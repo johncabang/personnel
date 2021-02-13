@@ -32,7 +32,8 @@ function AddEmployee({
           id="filled-required-firstname"
           label="Required"
           defaultValue="First Name"
-          variant="filled"
+          variant="outlined"
+          size="small"
           onChange={(event) => {
             setFirstName(event.target.value);
           }}
@@ -42,7 +43,8 @@ function AddEmployee({
           id="filled-required-lastname"
           label="Required"
           defaultValue="Last Name"
-          variant="filled"
+          variant="outlined"
+          size="small"
           onChange={(event) => {
             setLastName(event.target.value);
           }}
@@ -52,7 +54,8 @@ function AddEmployee({
           id="filled-required-title"
           label="Required"
           defaultValue="Title"
-          variant="filled"
+          variant="outlined"
+          size="small"
           onChange={(event) => {
             setTitle(event.target.value);
           }}
@@ -62,7 +65,8 @@ function AddEmployee({
           id="filled-required-location"
           label="Required"
           defaultValue="Location"
-          variant="filled"
+          variant="outlined"
+          size="small"
           onChange={(event) => {
             setLocation(event.target.value);
           }}
@@ -74,7 +78,8 @@ function AddEmployee({
           InputLabelProps={{
             shrink: true,
           }}
-          variant="filled"
+          variant="outlined"
+          size="small"
           onChange={(event) => {
             setAge(event.target.value);
           }}
@@ -86,7 +91,8 @@ function AddEmployee({
           InputLabelProps={{
             shrink: true,
           }}
-          variant="filled"
+          variant="outlined"
+          size="small"
           onChange={(event) => {
             setSalary(event.target.value);
           }}
@@ -99,9 +105,9 @@ function AddEmployee({
           size="large"
           startIcon={<PersonAddIcon />}
           onClick={addEmployee}
-          style={{ borderRadius: 25 }}
+          style={{ borderRadius: 30, width: 320 }}
         >
-          Add
+          Add Employee
         </Button>
       </div>
     </form>

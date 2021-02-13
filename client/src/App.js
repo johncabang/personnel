@@ -1,4 +1,3 @@
-import "./App.css";
 import { useState } from "react";
 import Axios from "axios";
 import Button from "@material-ui/core/Button";
@@ -7,6 +6,7 @@ import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import DataTable from "./components/DataTable";
 import AddEmployee from "./components/AddEmployee";
 import Header from "./components/Header";
+import DeleteMenu from "./components/DeleteMenu";
 
 function App() {
   const [firstName, setFirstName] = useState("");
@@ -47,7 +47,7 @@ function App() {
     });
   };
 
-  const updateEmployeesalary = (id) => {
+  const updateEmployeeSalary = (id) => {
     Axios.put("http://localhost:3001/update", {
       salary: newSalary,
       id: id,
@@ -74,16 +74,31 @@ function App() {
     Axios.delete(`http://localhost:3001/delete/${id}`).then((response) => {
       setEmployeeList(
         employeeList.filter((employee) => {
-          return employee.id !== id;
+          return employee.id != id;
         })
       );
     });
   };
 
   return (
-    <div className="App">
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        backgroundColor: "#ECEBEB",
+      }}
+    >
       <Header />
-      <div className="information">
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          width: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <AddEmployee
           addEmployee={addEmployee}
           setFirstName={setFirstName}
@@ -94,8 +109,14 @@ function App() {
           setSalary={setSalary}
         />
       </div>
-      <div className="employees">
-        {/* <button onClick={getEmployees}>Show Employees</button> */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+          width: "100%",
+        }}
+      >
         <div style={{ textAlign: "center", marginTop: 20, marginBottom: 40 }}>
           <Button
             variant="contained"
@@ -103,9 +124,9 @@ function App() {
             size="large"
             startIcon={<KeyboardArrowDownIcon />}
             onClick={getEmployees}
-            style={{ borderRadius: 25 }}
+            style={{ borderRadius: 30, width: 320 }}
           >
-            Show Employees
+            Show Employee(s)
           </Button>
         </div>
 
@@ -147,7 +168,12 @@ function App() {
             </div>
           );
         })} */}
-        <DataTable employeeList={employeeList} />
+        <DataTable
+          employeeList={employeeList}
+          updateEmployeeSalary={updateEmployeeSalary}
+          deleteEmployee={deleteEmployee}
+          DeleteMenu={DeleteMenu}
+        />
       </div>
     </div>
   );

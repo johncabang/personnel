@@ -1,5 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Button, Toolbar, Typography } from "@material-ui/core/";
+import logo from "../assets/images/logo.png";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -14,9 +15,18 @@ function Header() {
   return (
     <AppBar position="static">
       <Toolbar className={classes.root}>
-        <Typography variant="h6" className={classes.title}>
-          Personnel
-        </Typography>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <img src={logo} />
+          <Typography variant="h5" className={classes.title}>
+            Personnel
+          </Typography>
+        </div>
         <Button color="inherit" style={{ width: 70, height: 40 }}>
           Login
         </Button>
