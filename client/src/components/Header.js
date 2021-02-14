@@ -6,6 +6,7 @@ const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
     justifyContent: "space-between",
+    height: "5vh",
   },
 }));
 
@@ -31,9 +32,14 @@ function Header() {
             Personnel
           </Typography>
         </div>
-        <Button color="inherit" style={{ width: 70, height: 40 }}>
-          Login
-        </Button>
+        <div>
+          <Button color="inherit" style={{ width: 70, height: 40 }}>
+            Login
+          </Button>
+          <Button color="inherit" style={{ width: 70, height: 40 }}>
+            Register
+          </Button>
+        </div>
       </Toolbar>
     </AppBar>
   );

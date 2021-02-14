@@ -12,6 +12,9 @@ app.use("/create", employeesRoute);
 app.use("/update", employeesRoute);
 app.use("/delete", employeesRoute);
 
+const usersRoute = require("./routes/Users");
+app.use("/users", usersRoute);
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });

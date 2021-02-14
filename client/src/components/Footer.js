@@ -7,6 +7,7 @@ const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
     justifyContent: "center",
+    height: "5vh",
     bottom: 0,
   },
 }));
