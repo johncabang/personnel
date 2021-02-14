@@ -1,3 +1,6 @@
+import { useState, useContext } from "react";
+import { EmployeeContext } from "./EmployeeContext";
+import Axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, TextField } from "@material-ui/core/";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
@@ -9,19 +12,43 @@ const useStyles = makeStyles((theme) => ({
       width: "25ch",
     },
     marginTop: 50,
-    marginBottom: 50,
+    width: "80%",
   },
 }));
 
-function AddEmployee({
-  setFirstName,
-  setLastName,
-  setTitle,
-  setLocation,
-  setAge,
-  setSalary,
-  addEmployee,
-}) {
+function AddEmployee() {
+  const [employeeList, setEmployeeList] = useContext(EmployeeContext);
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [age, setAge] = useState(0);
+  const [location, setLocation] = useState("");
+  const [title, setTitle] = useState("");
+  const [salary, setSalary] = useState(0);
+
+  const addEmployee = () => {
+    Axios.post("http://localhost:3001/create", {
+      first_name: firstName,
+      last_name: lastName,
+      age: age,
+      location: location,
+      title: title,
+      salary: salary,
+    }).then(() => {
+      setEmployeeList([
+        ...employeeList,
+        {
+          first_name: firstName,
+          last_name: lastName,
+          age: age,
+          location: location,
+          title: title,
+          salary: salary,
+        },
+      ]);
+    });
+  };
+
   const classes = useStyles();
 
   return (
@@ -98,18 +125,19 @@ function AddEmployee({
           }}
         />
       </div>
-      <div style={{ textAlign: "center", marginTop: 50 }}>
-        <Button
-          variant="contained"
-          color="primary"
-          size="large"
-          startIcon={<PersonAddIcon />}
-          onClick={addEmployee}
-          style={{ borderRadius: 30, width: 320 }}
-        >
-          Add Employee
-        </Button>
-      </div>
+      <Button
+        variant="contained"
+        color="primary"
+        size="large"
+        startIcon={<PersonAddIcon />}
+        onClick={addEmployee}
+        style={{
+          marginTop: 50,
+          borderRadius: 30,
+        }}
+      >
+        Add Employee
+      </Button>
     </form>
   );
 }

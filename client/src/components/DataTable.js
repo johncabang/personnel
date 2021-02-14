@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Axios from "axios";
 
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
 import {
   Paper,
   Table,
@@ -12,6 +12,24 @@ import {
   TableRow,
 } from "@material-ui/core/";
 
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    "&:nth-of-type(odd)": {
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+}))(TableRow);
+
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -19,13 +37,13 @@ const useStyles = makeStyles({
 });
 
 function DataTable({
+  DeleteMenu,
+  deleteEmployee,
   employeeList,
   setEmployeeList,
-  updateEmployeeSalary,
-  deleteEmployee,
-  DeleteMenu,
-  UpdateMenu,
   setNewSalary,
+  UpdateMenu,
+  updateEmployeeSalary,
 }) {
   useEffect(() => {
     Axios.get("http://localhost:3001/employees").then((response) => {
@@ -40,30 +58,30 @@ function DataTable({
       component={Paper}
       style={{ width: "70%", marginBottom: 50 }}
     >
-      <Table className={classes.table} aria-label="simple table">
+      <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <TableCell align="left">First Name</TableCell>
-            <TableCell align="left">Last Name</TableCell>
-            <TableCell align="left">Title</TableCell>
-            <TableCell align="left">Location</TableCell>
-            <TableCell align="left">Age</TableCell>
-            <TableCell align="left">Salary</TableCell>
-            <TableCell align="left" width="100"></TableCell>
+            <StyledTableCell>FIRST NAME</StyledTableCell>
+            <StyledTableCell>LAST NAME</StyledTableCell>
+            <StyledTableCell>TITLE</StyledTableCell>
+            <StyledTableCell>LOCATION</StyledTableCell>
+            <StyledTableCell>AGE</StyledTableCell>
+            <StyledTableCell>SALARY</StyledTableCell>
+            <StyledTableCell width="100"></StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {employeeList.map((employee) => (
-            <TableRow key={employee.id}>
-              <TableCell component="th" scope="row">
+            <StyledTableRow key={employee.id}>
+              <StyledTableCell component="th" scope="row">
                 {employee.first_name}
-              </TableCell>
-              <TableCell align="left">{employee.last_name}</TableCell>
-              <TableCell align="left">{employee.title}</TableCell>
-              <TableCell align="left">{employee.location}</TableCell>
-              <TableCell align="left">{employee.age}</TableCell>
-              <TableCell align="left">{employee.salary}</TableCell>
-              <TableCell align="left">
+              </StyledTableCell>
+              <StyledTableCell>{employee.last_name}</StyledTableCell>
+              <StyledTableCell>{employee.title}</StyledTableCell>
+              <StyledTableCell>{employee.location}</StyledTableCell>
+              <StyledTableCell>{employee.age}</StyledTableCell>
+              <StyledTableCell>{employee.salary}</StyledTableCell>
+              <StyledTableCell>
                 <div style={{ display: "flex" }}>
                   <UpdateMenu
                     setNewSalary={setNewSalary}
@@ -75,8 +93,8 @@ function DataTable({
                     rowID={employee.id}
                   />
                 </div>
-              </TableCell>
-            </TableRow>
+              </StyledTableCell>
+            </StyledTableRow>
           ))}
         </TableBody>
       </Table>
