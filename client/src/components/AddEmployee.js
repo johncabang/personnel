@@ -27,7 +27,7 @@ function AddEmployee() {
   const [salary, setSalary] = useState(0);
 
   const addEmployee = () => {
-    Axios.post("http://localhost:3001/create", {
+    Axios.post("http://localhost:3001/employees/create", {
       first_name: firstName,
       last_name: lastName,
       age: age,

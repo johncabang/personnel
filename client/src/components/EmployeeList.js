@@ -45,13 +45,15 @@ function EmployeeList() {
   const classes = useStyles();
 
   const deleteEmployee = (id) => {
-    Axios.delete(`http://localhost:3001/delete/${id}`).then((response) => {
-      setEmployeeList(
-        employeeList.filter((employee) => {
-          return employee.id != id;
-        })
-      );
-    });
+    Axios.delete(`http://localhost:3001/employees/delete/${id}`).then(
+      (response) => {
+        setEmployeeList(
+          employeeList.filter((employee) => {
+            return employee.id != id;
+          })
+        );
+      }
+    );
   };
 
   return (

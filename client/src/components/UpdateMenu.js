@@ -1,4 +1,7 @@
 import React, { useState, useContext } from "react";
+import { EmployeeContext } from "./EmployeeContext";
+import Axios from "axios";
+
 import { withStyles } from "@material-ui/core/styles";
 import {
   IconButton,
@@ -11,9 +14,7 @@ import {
 } from "@material-ui/core/";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import EditIcon from "@material-ui/icons/Edit";
-import { EmployeeContext } from "./EmployeeContext";
 
-import Axios from "axios";
 const StyledMenu = withStyles({
   paper: {
     border: "1px solid #d3d4d5",
@@ -34,7 +35,7 @@ const StyledMenu = withStyles({
   />
 ));
 
-const StyledMenuItem = withStyles((theme) => ({
+const StyledMenuItem = withStyles(() => ({
   root: {},
 }))(MenuItem);
 
@@ -45,7 +46,7 @@ function UpdateMenu({ rowID }) {
   const [newSalary, setNewSalary] = useState(0);
 
   const updateEmployeeSalary = (id) => {
-    Axios.put("http://localhost:3001/update", {
+    Axios.put("http://localhost:3001/employees/update", {
       salary: newSalary,
       id: id,
     }).then((response) => {
@@ -91,6 +92,7 @@ function UpdateMenu({ rowID }) {
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
+        style={{ padding: 0 }}
       >
         <StyledMenuItem>
           <div style={{ display: "flex", flexDirection: "column" }}>

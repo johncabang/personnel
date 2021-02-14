@@ -7,7 +7,7 @@ export function EmployeeProvider(props) {
   const [employeeList, setEmployeeList] = useState([]);
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/employees").then((response) => {
+    Axios.get("http://localhost:3001/employees/employees").then((response) => {
       setEmployeeList(response.data);
     });
   }, []);
