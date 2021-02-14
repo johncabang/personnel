@@ -3,22 +3,39 @@ const router = express.Router();
 
 const db = require("../config/db");
 
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+
+// Register User
+
 router.post("/register", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  db.query(
-    "INSERT INTO Users (email, password) VALUES (?, ?)",
-    [email, password],
-    (err, results) => {
-      if (err) {
-        console.log(err);
-      } else {
-        res.send(results);
-      }
+  bcrypt.hash(password, saltRounds, (err, hash) => {
+    if (err) {
+      console.log(err);
     }
-  );
+
+    db.query(
+      "INSERT INTO Users (email, password) VALUES (?, ?)",
+      [email, hash],
+      (err, results) => {
+        console.log(err);
+      }
+    );
+  });
 });
+
+router.get("/login", (req, res) => {
+  if (req.session.user) {
+    res.send({ loggedIn: true, user: req.session.user });
+  } else {
+    res.send({ loggedIn: false });
+  }
+});
+
+// Login User
 
 router.post("/login", (req, res) => {
   const email = req.body.email;
@@ -26,16 +43,21 @@ router.post("/login", (req, res) => {
 
   db.query("SELECT * FROM Users WHERE email = ?", [email], (err, results) => {
     if (err) {
-      console.log(err);
+      res.send({ err: err });
+      // console.log(err);
     }
     if (results.length > 0) {
-      if (password === results[0].password) {
-        res.send("You are logged in.");
-      } else {
-        res.send("Wrong email/password.");
-      }
+      bcrypt.compare(password, results[0].password, (error, response) => {
+        if (response) {
+          req.session.user = results;
+          console.log(req.session.user);
+          res.send(results);
+        } else {
+          res.send({ message: "Wrong email/password" });
+        }
+      });
     } else {
-      res.send("User doesn't exist.");
+      res.send({ message: "User doesn't exist" });
     }
   });
 });

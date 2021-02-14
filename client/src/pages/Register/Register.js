@@ -22,6 +22,8 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  Axios.defaults.withCredentials = true;
+
   const register = () => {
     // console.log(email);
     Axios.post("http://localhost:3001/users/register", {

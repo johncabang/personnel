@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, TextField, Typography } from "@material-ui/core/";
@@ -21,16 +21,30 @@ const useStyles = makeStyles(() => ({
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginStatus, setLoginStatus] = useState("");
+
+  Axios.defaults.withCredentials = true;
 
   const login = () => {
-    // console.log(email);
     Axios.post("http://localhost:3001/users/login", {
       email: email,
       password: password,
     }).then((response) => {
-      console.log(response);
+      if (response.data.message) {
+        setLoginStatus(response.data.message);
+      } else {
+        setLoginStatus(response.data[0].email);
+      }
     });
   };
+
+  useEffect(() => {
+    Axios.get("http://localhost:3001/users/login").then((response) => {
+      if (response.data.loggedIn === true) {
+        setLoginStatus(response.data.user[0].email);
+      }
+    });
+  }, []);
 
   const classes = useStyles();
 
@@ -69,6 +83,9 @@ function Login() {
           }}
           className={classes.input}
         />
+        <h5 style={{ color: "#DC143C	", paddingLeft: 10, margin: 0 }}>
+          {loginStatus}
+        </h5>
         <Button
           variant="contained"
           color="primary"

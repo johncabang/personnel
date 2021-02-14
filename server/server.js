@@ -3,14 +3,36 @@ const app = express();
 const cors = require("cors");
 const PORT = process.env.PORT || 3001;
 
-app.use(cors());
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+
 app.use(express.json());
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(
+  session({
+    key: "emailId",
+    secret: "abcdefghijklmnopqrstuvwxyz",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      expires: 60 * 60 * 24,
+    },
+  })
+);
 
 const employeesRoute = require("./routes/Employees");
 app.use("/employees", employeesRoute);
-app.use("/create", employeesRoute);
-app.use("/update", employeesRoute);
-app.use("/delete", employeesRoute);
 
 const usersRoute = require("./routes/Users");
 app.use("/users", usersRoute);
