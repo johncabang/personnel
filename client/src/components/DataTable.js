@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import Axios from "axios";
+
 import { makeStyles } from "@material-ui/core/styles";
 import {
-  IconButton,
   Paper,
   Table,
   TableBody,
@@ -10,8 +11,6 @@ import {
   TableHead,
   TableRow,
 } from "@material-ui/core/";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
 
 const useStyles = makeStyles({
   table: {
@@ -19,63 +18,62 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(first_name, last_name, title, location, age, salary) {
-  return { first_name, last_name, title, location, age, salary };
-}
-
-const rows = [
-  createData("John", "Cabang", "Web Developer", "Toronto", 40, 80000),
-  createData("Dianne", "Cabang", "UX Writer", "Toronto", 39, 120000),
-  createData("Danica", "Cabang", "Artist", "Toronto", 9, 70000),
-  createData("Stella", "Cabang", "Happy Girl", "Toronto", 5, 65000),
-];
-
 function DataTable({
   employeeList,
+  setEmployeeList,
   updateEmployeeSalary,
   deleteEmployee,
   DeleteMenu,
   UpdateMenu,
   setNewSalary,
 }) {
+  useEffect(() => {
+    Axios.get("http://localhost:3001/employees").then((response) => {
+      setEmployeeList(response.data);
+    });
+  }, []);
+
   const classes = useStyles();
 
   return (
     <TableContainer
       component={Paper}
-      style={{ width: "80%", marginBottom: 150 }}
+      style={{ width: "70%", marginBottom: 50 }}
     >
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>First Name</TableCell>
-            <TableCell>Last Name</TableCell>
+            <TableCell align="left">First Name</TableCell>
+            <TableCell align="left">Last Name</TableCell>
             <TableCell align="left">Title</TableCell>
             <TableCell align="left">Location</TableCell>
             <TableCell align="left">Age</TableCell>
             <TableCell align="left">Salary</TableCell>
-            <TableCell align="left">Update</TableCell>
+            <TableCell align="left" width="100"></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {employeeList.map((row, key) => (
-            <TableRow key={key}>
+          {employeeList.map((employee) => (
+            <TableRow key={employee.id}>
               <TableCell component="th" scope="row">
-                {row.first_name}
+                {employee.first_name}
               </TableCell>
-              <TableCell align="left">{row.last_name}</TableCell>
-              <TableCell align="left">{row.title}</TableCell>
-              <TableCell align="left">{row.location}</TableCell>
-              <TableCell align="left">{row.age}</TableCell>
-              <TableCell align="left">{row.salary}</TableCell>
+              <TableCell align="left">{employee.last_name}</TableCell>
+              <TableCell align="left">{employee.title}</TableCell>
+              <TableCell align="left">{employee.location}</TableCell>
+              <TableCell align="left">{employee.age}</TableCell>
+              <TableCell align="left">{employee.salary}</TableCell>
               <TableCell align="left">
                 <div style={{ display: "flex" }}>
                   <UpdateMenu
                     setNewSalary={setNewSalary}
                     updateEmployeeSalary={updateEmployeeSalary}
-                    rowID={row.id}
+                    rowID={employee.id}
                   />
-                  <DeleteMenu deleteEmployee={deleteEmployee} rowID={row.id} />
+                  <DeleteMenu
+                    deleteEmployee={deleteEmployee}
+                    rowID={employee.id}
+                  />
                 </div>
               </TableCell>
             </TableRow>

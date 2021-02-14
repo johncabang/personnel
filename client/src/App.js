@@ -1,14 +1,18 @@
 import { useState } from "react";
+import { EmployeeProvider } from "./components/EmployeeContext";
+
 import Axios from "axios";
+import "./App.css";
 import Button from "@material-ui/core/Button";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
-
+import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import DataTable from "./components/DataTable";
 import AddEmployee from "./components/AddEmployee";
 import Header from "./components/Header";
 import DeleteMenu from "./components/DeleteMenu";
 import UpdateMenu from "./components/UpdateMenu";
 import Footer from "./components/Footer";
+import EmployeeList from "./components/EmployeeList";
 
 function App() {
   const [firstName, setFirstName] = useState("");
@@ -20,11 +24,11 @@ function App() {
   const [newSalary, setNewSalary] = useState(0);
   const [employeeList, setEmployeeList] = useState([]);
 
-  const getEmployees = () => {
-    Axios.get("http://localhost:3001/employees").then((response) => {
-      setEmployeeList(response.data);
-    });
-  };
+  // const getEmployees = () => {
+  //   Axios.get("http://localhost:3001/employees").then((response) => {
+  //     setEmployeeList(response.data);
+  //   });
+  // };
 
   const addEmployee = () => {
     Axios.post("http://localhost:3001/create", {
@@ -83,25 +87,33 @@ function App() {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        backgroundColor: "#ECEBEB",
-      }}
-    >
-      <Header />
+    <EmployeeProvider>
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          width: "100%",
-          justifyContent: "center",
-          alignItems: "center",
+          backgroundColor: "#ECEBEB",
+          height: "100%",
         }}
       >
-        <AddEmployee
+        <Header />
+        <div>
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            startIcon={<PersonAddIcon />}
+            // onClick={addEmployee}
+            style={{
+              marginTop: 50,
+              marginBottom: 50,
+              marginLeft: "15%",
+              borderRadius: 30,
+              width: 200,
+            }}
+          >
+            Add Employee
+          </Button>
+
+          {/* <AddEmployee
           addEmployee={addEmployee}
           setFirstName={setFirstName}
           setLastName={setLastName}
@@ -109,17 +121,18 @@ function App() {
           setLocation={setLocation}
           setAge={setAge}
           setSalary={setSalary}
-        />
-      </div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          flexDirection: "column",
-          width: "100%",
-        }}
-      >
-        <div style={{ textAlign: "center", marginTop: 20, marginBottom: 40 }}>
+        /> */}
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+            width: "100%",
+          }}
+        >
+          {/* <div style={{ textAlign: "center", marginTop: 20, marginBottom: 40 }}>
           <Button
             variant="contained"
             color="primary"
@@ -130,57 +143,21 @@ function App() {
           >
             Show Employee(s)
           </Button>
+        </div> */}
+          <DataTable
+            employeeList={employeeList}
+            setEmployeeList={setEmployeeList}
+            updateEmployeeSalary={updateEmployeeSalary}
+            deleteEmployee={deleteEmployee}
+            DeleteMenu={DeleteMenu}
+            UpdateMenu={UpdateMenu}
+            setNewSalary={setNewSalary}
+          />
         </div>
-
-        {/* {employeeList.map((employee, key) => {
-          return (
-            <div className="employee" key={key}>
-              <div>
-                <h3>First Name: {employee.first_name}</h3>
-                <h3>Last Name: {employee.last_name}</h3>
-                <h3>Age: {employee.age}</h3>
-                <h3>Location: {employee.location}</h3>
-                <h3>Title: {employee.title}</h3>
-                <h3>Salary: {employee.salary}</h3>
-              </div>
-              <div>
-                <input
-                  type="text"
-                  placeholder="update new salary..."
-                  onChange={(event) => {
-                    setNewSalary(event.target.value);
-                  }}
-                />
-                <button
-                  onClick={() => {
-                    updateEmployeesalary(employee.id);
-                  }}
-                >
-                  Update
-                </button>
-
-                <button
-                  onClick={() => {
-                    deleteEmployee(employee.id);
-                  }}
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          );
-        })} */}
-        <DataTable
-          employeeList={employeeList}
-          updateEmployeeSalary={updateEmployeeSalary}
-          deleteEmployee={deleteEmployee}
-          DeleteMenu={DeleteMenu}
-          UpdateMenu={UpdateMenu}
-          setNewSalary={setNewSalary}
-        />
+        {/* <EmployeeList /> */}
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </EmployeeProvider>
   );
 }
 

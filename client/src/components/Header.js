@@ -22,7 +22,11 @@ function Header() {
             alignItems: "center",
           }}
         >
-          <img src={logo} />
+          {/* <img src={logo} /> */}
+          <img
+            src="https://img.icons8.com/wired/100/000000/briefcase.png"
+            style={{ width: "20%", marginRight: 20 }}
+          />
           <Typography variant="h5" className={classes.title}>
             Personnel
           </Typography>
