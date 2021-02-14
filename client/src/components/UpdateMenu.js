@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import {
   IconButton,
@@ -11,7 +11,9 @@ import {
 } from "@material-ui/core/";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import EditIcon from "@material-ui/icons/Edit";
+import { EmployeeContext } from "./EmployeeContext";
 
+import Axios from "axios";
 const StyledMenu = withStyles({
   paper: {
     border: "1px solid #d3d4d5",
@@ -36,9 +38,34 @@ const StyledMenuItem = withStyles((theme) => ({
   root: {},
 }))(MenuItem);
 
-function UpdateMenu({ setNewSalary, updateEmployeeSalary, rowID }) {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+function UpdateMenu({ rowID }) {
+  const [employeeList, setEmployeeList] = useContext(EmployeeContext);
 
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [newSalary, setNewSalary] = useState(0);
+
+  const updateEmployeeSalary = (id) => {
+    Axios.put("http://localhost:3001/update", {
+      salary: newSalary,
+      id: id,
+    }).then((response) => {
+      setEmployeeList(
+        employeeList.map((employee) => {
+          return employee.id == id
+            ? {
+                id: employee.id,
+                first_name: employee.first_name,
+                last_name: employee.last_name,
+                location: employee.location,
+                age: employee.age,
+                title: employee.title,
+                salary: newSalary,
+              }
+            : employee;
+        })
+      );
+    });
+  };
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };

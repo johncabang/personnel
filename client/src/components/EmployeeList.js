@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import Axios from "axios";
+
 import { EmployeeContext } from "./EmployeeContext";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import {
@@ -10,6 +12,8 @@ import {
   TableHead,
   TableRow,
 } from "@material-ui/core/";
+import DeleteMenu from "./DeleteMenu";
+import UpdateMenu from "./UpdateMenu";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -37,8 +41,18 @@ const useStyles = makeStyles({
 // import Employee from "./Employee";
 
 function EmployeeList() {
-  const [employeeList] = useContext(EmployeeContext);
+  const [employeeList, setEmployeeList] = useContext(EmployeeContext);
   const classes = useStyles();
+
+  const deleteEmployee = (id) => {
+    Axios.delete(`http://localhost:3001/delete/${id}`).then((response) => {
+      setEmployeeList(
+        employeeList.filter((employee) => {
+          return employee.id != id;
+        })
+      );
+    });
+  };
 
   return (
     <TableContainer
@@ -58,7 +72,9 @@ function EmployeeList() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {employeeList.map((employee) => (
+          {/* {console.log(employeeList)} */}
+
+          {employeeList.map((employee, index) => (
             // <Employee
             //   key={employee.id}
             //   first_name={employee.first_name}
@@ -68,8 +84,9 @@ function EmployeeList() {
             //   age={employee.age}
             //   salary={employee.salary}
             // />
-
-            <StyledTableRow key={employee.id}>
+            // TODOS - fix key={index}
+            <StyledTableRow key={index}>
+              {/* {console.log(employee.id)} */}
               <StyledTableCell component="th" scope="row">
                 {employee.first_name}
               </StyledTableCell>
@@ -78,20 +95,15 @@ function EmployeeList() {
               <StyledTableCell>{employee.location}</StyledTableCell>
               <StyledTableCell>{employee.age}</StyledTableCell>
               <StyledTableCell>{employee.salary}</StyledTableCell>
-
-              {/* <StyledTableCell>
+              <StyledTableCell>
                 <div style={{ display: "flex" }}>
-                  <UpdateMenu
-                    setNewSalary={setNewSalary}
-                    updateEmployeeSalary={updateEmployeeSalary}
-                    rowID={employee.id}
-                  />
+                  <UpdateMenu rowID={employee.id} />
                   <DeleteMenu
                     deleteEmployee={deleteEmployee}
                     rowID={employee.id}
                   />
                 </div>
-              </StyledTableCell> */}
+              </StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

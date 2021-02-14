@@ -35,8 +35,8 @@ function AddEmployee() {
       title: title,
       salary: salary,
     }).then(() => {
-      setEmployeeList([
-        ...employeeList,
+      setEmployeeList((prevEmployeeList) => [
+        ...prevEmployeeList,
         {
           first_name: firstName,
           last_name: lastName,
@@ -57,8 +57,7 @@ function AddEmployee() {
         <TextField
           required
           id="filled-required-firstname"
-          label="Required"
-          defaultValue="First Name"
+          label="First Name"
           variant="outlined"
           size="small"
           onChange={(event) => {
@@ -68,8 +67,7 @@ function AddEmployee() {
         <TextField
           required
           id="filled-required-lastname"
-          label="Required"
-          defaultValue="Last Name"
+          label="Last Name"
           variant="outlined"
           size="small"
           onChange={(event) => {
@@ -79,8 +77,7 @@ function AddEmployee() {
         <TextField
           required
           id="filled-required-title"
-          label="Required"
-          defaultValue="Title"
+          label="Title"
           variant="outlined"
           size="small"
           onChange={(event) => {
@@ -90,8 +87,7 @@ function AddEmployee() {
         <TextField
           required
           id="filled-required-location"
-          label="Required"
-          defaultValue="Location"
+          label="Location"
           variant="outlined"
           size="small"
           onChange={(event) => {
@@ -99,12 +95,10 @@ function AddEmployee() {
           }}
         />
         <TextField
+          required
           id="filled-number-age"
           label="Age"
           type="number"
-          InputLabelProps={{
-            shrink: true,
-          }}
           variant="outlined"
           size="small"
           onChange={(event) => {
@@ -112,12 +106,10 @@ function AddEmployee() {
           }}
         />
         <TextField
+          required
           id="filled-number-salary"
           label="Salary"
           type="number"
-          InputLabelProps={{
-            shrink: true,
-          }}
           variant="outlined"
           size="small"
           onChange={(event) => {
