@@ -46,14 +46,14 @@ function Header() {
           >
             Login
           </Button>
-          <Button
+          {/* <Button
             component={Link}
             to="/register"
             color="inherit"
             style={{ width: 70, height: 40 }}
           >
             Register
-          </Button>
+          </Button> */}
         </div>
       </Toolbar>
     </AppBar>

@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
   session({
-    key: "emailId",
+    key: "session",
     secret: "abcdefghijklmnopqrstuvwxyz",
     resave: false,
     saveUninitialized: false,

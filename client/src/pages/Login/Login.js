@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import Axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, TextField, Typography } from "@material-ui/core/";
@@ -19,9 +20,11 @@ const useStyles = makeStyles(() => ({
 }));
 
 function Login() {
+  const history = useHistory();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loginStatus, setLoginStatus] = useState("");
+  const [loginStatus, setLoginStatus] = useState(false);
 
   Axios.defaults.withCredentials = true;
 
@@ -30,13 +33,32 @@ function Login() {
       email: email,
       password: password,
     }).then((response) => {
-      if (response.data.message) {
-        setLoginStatus(response.data.message);
-      } else {
-        setLoginStatus(response.data[0].email);
+      if (!response.data.auth) {
+        setLoginStatus(false);
+      }
+      // else {
+      //   setLoginStatus(response.data[0].email);
+      // }
+      else {
+        // console.log(response.data);
+        localStorage.setItem("token", response.data.token);
+        setLoginStatus(true);
+        history.push("/");
       }
     });
   };
+
+  // Check is User is Authenticated
+
+  // const userAuthenticated = () => {
+  //   Axios.get("http://localhost:3001/users/isUserAuth", {
+  //     headers: {
+  //       "x-access-token": localStorage.getItem("token"),
+  //     },
+  //   }).then((response) => {
+  //     console.log(response);
+  //   });
+  // };
 
   useEffect(() => {
     Axios.get("http://localhost:3001/users/login").then((response) => {
@@ -83,9 +105,13 @@ function Login() {
           }}
           className={classes.input}
         />
-        <h5 style={{ color: "#DC143C	", paddingLeft: 10, margin: 0 }}>
-          {loginStatus}
-        </h5>
+
+        {/* Check if User is Authenticated / signed in */}
+        {/* <h5 style={{ color: "#DC143C	", paddingLeft: 10, margin: 0 }}>
+          {loginStatus && (
+            <button onClick={userAuthenticated}>Check if Authenticated </button>
+          )}
+        </h5> */}
         <Button
           variant="contained"
           color="primary"
