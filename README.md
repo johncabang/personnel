@@ -1,6 +1,6 @@
 ## Personnel **(work in progress)**
 
-#### An employee management (CRUD) application.
+#### A human resources management system (CRUD) application.
 
 ### Dependencies
 
@@ -12,4 +12,5 @@
 
 ### Screenshots
 
-!["personnel"](https://github.com/johncabang/personnel/blob/main/docs/personnel-002.png?raw=true)
+!["personnel"](https://github.com/johncabang/personnel/blob/main/docs/personnel-004.png?raw=true)
+!["personnel"](https://github.com/johncabang/personnel/blob/main/docs/personnel-003.png?raw=true)
