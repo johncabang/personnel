@@ -13,9 +13,11 @@ const useStyles = makeStyles(() => ({
     justifyContent: "center",
     flexDirection: "column",
     alignItems: "center",
+    height: "100%",
   },
   input: {
     margin: 10,
+    width: 300,
   },
 }));
 
@@ -78,6 +80,9 @@ function Login() {
         style={{
           display: "flex",
           flexDirection: "column",
+          borderRadius: 10,
+          padding: 30,
+          background: "white",
         }}
       >
         <Typography variant="h6" style={{ margin: 10 }}>
@@ -125,7 +130,7 @@ function Login() {
           onClick={login}
           style={{
             margin: 10,
-            width: 200,
+            width: 300,
           }}
         >
           LOGIN

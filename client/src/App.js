@@ -10,17 +10,17 @@ import Login from "./pages/Login/Login";
 
 function App() {
   return (
-    <EmployeeProvider>
-      <Header />
-      <div className="App">
+    <div className="App" style={{ height: "100vh" }}>
+      <EmployeeProvider>
+        <Header />
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
         </Switch>
-      </div>
-      <Footer />
-    </EmployeeProvider>
+        <Footer />
+      </EmployeeProvider>
+    </div>
   );
 }
 

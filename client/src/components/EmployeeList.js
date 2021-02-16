@@ -59,17 +59,25 @@ function EmployeeList() {
   return (
     <TableContainer
       component={Paper}
-      style={{ width: "80%", marginTop: 50, marginBottom: 50 }}
+      style={{
+        width: "80%",
+        marginTop: 50,
+        marginBottom: 50,
+        borderRadius: 10,
+      }}
     >
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell>FIRST NAME</StyledTableCell>
             <StyledTableCell>LAST NAME</StyledTableCell>
-            <StyledTableCell>TITLE</StyledTableCell>
-            <StyledTableCell>LOCATION</StyledTableCell>
             <StyledTableCell>AGE</StyledTableCell>
+            <StyledTableCell>LOCATION</StyledTableCell>
+            <StyledTableCell>EMAIL</StyledTableCell>
+            <StyledTableCell>PHONE NUMBER</StyledTableCell>
+            <StyledTableCell>TITLE</StyledTableCell>
             <StyledTableCell>SALARY</StyledTableCell>
+            <StyledTableCell>HIRE DATE</StyledTableCell>
             <StyledTableCell width="100"></StyledTableCell>
           </TableRow>
         </TableHead>
@@ -93,10 +101,13 @@ function EmployeeList() {
                 {employee.first_name}
               </StyledTableCell>
               <StyledTableCell>{employee.last_name}</StyledTableCell>
-              <StyledTableCell>{employee.title}</StyledTableCell>
-              <StyledTableCell>{employee.location}</StyledTableCell>
               <StyledTableCell>{employee.age}</StyledTableCell>
+              <StyledTableCell>{employee.location}</StyledTableCell>
+              <StyledTableCell>{employee.email}</StyledTableCell>
+              <StyledTableCell>{employee.phone_number}</StyledTableCell>
+              <StyledTableCell>{employee.title}</StyledTableCell>
               <StyledTableCell>{employee.salary}</StyledTableCell>
+              <StyledTableCell>{employee.hire_date}</StyledTableCell>
               <StyledTableCell>
                 <div style={{ display: "flex" }}>
                   <UpdateMenu rowID={employee.id} />

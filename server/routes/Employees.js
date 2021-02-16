@@ -18,12 +18,25 @@ router.post("/create", (req, res) => {
   const last_name = req.body.last_name;
   const age = req.body.age;
   const location = req.body.location;
+  const email = req.body.email;
+  const phone_number = req.body.phone_number;
   const title = req.body.title;
   const salary = req.body.salary;
+  const hire_date = req.body.hire_date;
 
   db.query(
-    "INSERT INTO employees (first_name, last_name, age, location, title, salary) VALUES (?, ?, ?, ?, ?, ?)",
-    [first_name, last_name, age, location, title, salary],
+    "INSERT INTO employees (first_name, last_name, age, location, email, phone_number, title, salary, hire_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    [
+      first_name,
+      last_name,
+      age,
+      location,
+      email,
+      phone_number,
+      title,
+      salary,
+      hire_date,
+    ],
     (err, result) => {
       if (err) {
         console.log(err);

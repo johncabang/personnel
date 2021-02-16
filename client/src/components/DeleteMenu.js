@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import {
   IconButton,
@@ -43,7 +43,7 @@ const StyledMenuItem = withStyles((theme) => ({
 }))(MenuItem);
 
 function DeleteMenu({ deleteEmployee, rowID }) {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -74,6 +74,7 @@ function DeleteMenu({ deleteEmployee, rowID }) {
         <StyledMenuItem
           onClick={() => {
             deleteEmployee(rowID);
+            handleClose();
           }}
         >
           {/* <ListItemIcon>

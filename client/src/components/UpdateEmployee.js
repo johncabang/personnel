@@ -12,10 +12,13 @@ export function updateEmployeeSalary(id) {
               id: employee.id,
               first_name: employee.first_name,
               last_name: employee.last_name,
-              location: employee.location,
               age: employee.age,
+              location: employee.location,
+              email: employee.email,
+              phone_number: employee.phone_number,
               title: employee.title,
               salary: newSalary,
+              hire_date: employee.hire_date,
             }
           : employee;
       })

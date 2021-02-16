@@ -63,11 +63,17 @@ router.post("/login", (req, res) => {
 
           res.json({ auth: true, token: token, results: results });
         } else {
-          res.json({ auth: false, message: "Wrong email/password." });
+          res.json({
+            auth: false,
+            message: "The password you enetered is incorrect",
+          });
         }
       });
     } else {
-      res.json({ auth: false, message: "No email exists." });
+      res.json({
+        auth: false,
+        message: "Couldn't find your Personnel Account",
+      });
     }
   });
 });
