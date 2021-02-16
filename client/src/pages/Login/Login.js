@@ -24,7 +24,7 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loginStatus, setLoginStatus] = useState(false);
+  const [loginStatus, setLoginStatus] = useState("");
 
   Axios.defaults.withCredentials = true;
 
@@ -34,7 +34,8 @@ function Login() {
       password: password,
     }).then((response) => {
       if (!response.data.auth) {
-        setLoginStatus(false);
+        setLoginStatus(response.data.message);
+        console.log(response.data.message);
       }
       // else {
       //   setLoginStatus(response.data[0].email);
@@ -42,7 +43,8 @@ function Login() {
       else {
         // console.log(response.data);
         localStorage.setItem("token", response.data.token);
-        setLoginStatus(true);
+        localStorage.setItem("loggedIn", true);
+        // setLoginStatus(true);
         history.push("/");
       }
     });
@@ -60,13 +62,13 @@ function Login() {
   //   });
   // };
 
-  useEffect(() => {
-    Axios.get("http://localhost:3001/users/login").then((response) => {
-      if (response.data.loggedIn === true) {
-        setLoginStatus(response.data.user[0].email);
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   Axios.get("http://localhost:3001/users/login").then((response) => {
+  //     if (response.data.loggedIn === true) {
+  //       setLoginStatus(response.data.user[0].email);
+  //     }
+  //   });
+  // }, []);
 
   const classes = useStyles();
 
@@ -112,6 +114,9 @@ function Login() {
             <button onClick={userAuthenticated}>Check if Authenticated </button>
           )}
         </h5> */}
+        <h5 style={{ color: "#DC143C	", paddingLeft: 10, margin: 0 }}>
+          {loginStatus}
+        </h5>
         <Button
           variant="contained"
           color="primary"

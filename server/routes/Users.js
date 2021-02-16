@@ -55,12 +55,10 @@ router.post("/login", (req, res) => {
       bcrypt.compare(password, results[0].password, (error, response) => {
         if (response) {
           // console.log("Backend - Users.js" + req.session.user);
-
           const id = results[0].id;
           const token = jwt.sign({ id }, "JWT_SECRET", {
             expiresIn: 300, // Realtime is 5 minutes
           });
-
           req.session.user = results;
 
           res.json({ auth: true, token: token, results: results });

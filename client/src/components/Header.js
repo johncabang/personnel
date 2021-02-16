@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
-import { withRouter } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, withRouter, useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Button, Toolbar, Typography } from "@material-ui/core/";
-import logo from "../assets/images/logo.png";
+// import logo from "../assets/images/logo.png";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -14,6 +14,22 @@ const useStyles = makeStyles(() => ({
 }));
 
 function Header() {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const history = useHistory();
+
+  useEffect(() => {
+    // console.log(localStorage.getItem("loggedIn"));
+    setLoggedIn(localStorage.getItem("loggedIn"));
+    // console.log(loggedIn);
+  }, [localStorage.getItem("loggedIn")]);
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("loggedIn");
+    setLoggedIn(false);
+  };
+
   const classes = useStyles();
 
   return (
@@ -38,14 +54,36 @@ function Header() {
           </div>
         </Link>
         <div>
-          <Button
-            component={Link}
-            to="/login"
-            color="inherit"
-            style={{ width: 70, height: 40 }}
-          >
-            Login
-          </Button>
+          {loggedIn ? (
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <Button
+                component={Link}
+                to="/"
+                color="inherit"
+                style={{ width: 70, height: 40 }}
+              >
+                ADMIN
+              </Button>
+              <Button
+                component={Link}
+                to="/login"
+                onClick={logout}
+                color="inherit"
+                style={{ width: 70, height: 40 }}
+              >
+                Logout
+              </Button>
+            </div>
+          ) : (
+            <Button
+              component={Link}
+              to="/login"
+              color="inherit"
+              style={{ width: 70, height: 40 }}
+            >
+              Login
+            </Button>
+          )}
           {/* <Button
             component={Link}
             to="/register"
