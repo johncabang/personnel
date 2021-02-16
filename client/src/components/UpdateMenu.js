@@ -10,6 +10,7 @@ import {
   ListItemIcon,
   ListItemText,
   TextField,
+  Tooltip,
   Typography,
 } from "@material-ui/core/";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
@@ -80,15 +81,19 @@ function UpdateMenu({ rowID }) {
 
   return (
     <div>
-      <IconButton
-        aria-controls="customized-menu"
-        aria-haspopup="true"
-        variant="contained"
-        color="primary"
-        onClick={handleClick}
-      >
-        <EditIcon />
-      </IconButton>
+      <Tooltip title="Update">
+        <IconButton
+          aria-controls="customized-menu"
+          aria-haspopup="true"
+          aria-label="edit"
+          variant="contained"
+          color="primary"
+          onClick={handleClick}
+        >
+          <EditIcon />
+        </IconButton>
+      </Tooltip>
+
       <StyledMenu
         id="customized-menu"
         anchorEl={anchorEl}
@@ -190,7 +195,7 @@ function UpdateMenu({ rowID }) {
           <ListItemIcon>
             <CheckCircleIcon
               fontSize="large"
-              style={{ marginLeft: 20, color: "green" }}
+              style={{ marginLeft: 20, color: "#48BC65" }}
               onClick={() => {
                 updateEmployeeSalary(rowID);
                 handleClose();

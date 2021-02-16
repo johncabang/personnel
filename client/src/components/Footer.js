@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Toolbar, Typography } from "@material-ui/core/";
-// import CopyrightIcon from "@material-ui/icons/Copyright";
+import CopyrightIcon from "@material-ui/icons/Copyright";
 // import logo from "../assets/images/logo.png";
 
 const useStyles = makeStyles(() => ({
@@ -29,8 +29,14 @@ function Footer() {
             variant="body2"
             style={{ display: "flex", alignitems: "center" }}
           >
-            {/* <CopyrightIcon /> */}
-            {new Date().getFullYear()} All Rights Reserved
+            Copyright
+          </Typography>
+          <CopyrightIcon style={{ marginRight: 5, marginLeft: 5 }} />
+          <Typography
+            variant="body2"
+            style={{ display: "flex", alignitems: "center" }}
+          >
+            {new Date().getFullYear()} Company Inc.
           </Typography>
         </div>
       </Toolbar>

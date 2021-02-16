@@ -6,7 +6,9 @@ import {
   MenuItem,
   // ListItemIcon,
   ListItemText,
+  Tooltip,
 } from "@material-ui/core/";
+
 import DeleteIcon from "@material-ui/icons/Delete";
 // import CancelIcon from "@material-ui/icons/Cancel";
 // import CheckCircleIcon from "@material-ui/icons/CheckCircle";
@@ -55,15 +57,19 @@ function DeleteMenu({ deleteEmployee, rowID }) {
 
   return (
     <div>
-      <IconButton
-        aria-controls="customized-menu"
-        aria-haspopup="true"
-        variant="contained"
-        color="secondary"
-        onClick={handleClick}
-      >
-        <DeleteIcon />
-      </IconButton>
+      <Tooltip title="Delete">
+        <IconButton
+          aria-controls="customized-menu"
+          aria-haspopup="true"
+          aria-label="delete"
+          variant="contained"
+          color="secondary"
+          onClick={handleClick}
+        >
+          <DeleteIcon />
+        </IconButton>
+      </Tooltip>
+
       <StyledMenu
         id="customized-menu"
         anchorEl={anchorEl}
