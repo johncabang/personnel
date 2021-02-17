@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+require("dotenv").config();
+
 const PORT = process.env.PORT || 3001;
 
 const bodyParser = require("body-parser");
@@ -31,11 +33,11 @@ app.use(
   })
 );
 
-const employeesRoute = require("./routes/Employees");
-app.use("/employees", employeesRoute);
-
 const usersRoute = require("./routes/Users");
 app.use("/users", usersRoute);
+
+const employeesRoute = require("./routes/Employees");
+app.use("/employees", employeesRoute);
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
