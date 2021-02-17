@@ -2,7 +2,7 @@ import Axios from "axios";
 import { useState, useContext } from "react";
 import { EmployeeContext } from "./EmployeeContext";
 import { makeStyles } from "@material-ui/core/styles";
-import { Button, TextField } from "@material-ui/core/";
+import { Button, TextField, Typography } from "@material-ui/core/";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 
 const useStyles = makeStyles((theme) => ({
@@ -13,10 +13,11 @@ const useStyles = makeStyles((theme) => ({
     },
     background: "white",
     padding: 20,
-    borderRadius: 10,
-    marginTop: 50,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    // marginTop: 50,
     marginBottom: 50,
-    width: "80%",
+    width: "75%",
     height: "100%",
   },
 }));
@@ -66,125 +67,141 @@ function AddEmployee() {
   const classes = useStyles();
 
   return (
-    <form className={classes.root} noValidate autoComplete="off">
-      <div
+    <>
+      <Typography
+        variant="body2"
         style={{
-          display: "flex",
-          flexDirection: "column",
-          marginRight: 0,
+          color: "white",
+          background: "black",
+          padding: 16,
+          width: "75%",
+          marginTop: 50,
+          borderTopLeftRadius: 10,
+          borderTopRightRadius: 10,
         }}
       >
-        <div>
-          <TextField
-            required
-            id="filled-required-firstname"
-            label="First Name"
-            variant="outlined"
-            size="small"
-            onChange={(event) => {
-              setFirstName(event.target.value);
-            }}
-          />
-          <TextField
-            required
-            id="filled-required-lastname"
-            label="Last Name"
-            variant="outlined"
-            size="small"
-            onChange={(event) => {
-              setLastName(event.target.value);
-            }}
-          />
-          <TextField
-            required
-            id="filled-number-age"
-            label="Age"
-            type="number"
-            variant="outlined"
-            size="small"
-            onChange={(event) => {
-              setAge(event.target.value);
-            }}
-          />
-          <TextField
-            required
-            id="filled-required-location"
-            label="Location"
-            variant="outlined"
-            size="small"
-            onChange={(event) => {
-              setLocation(event.target.value);
-            }}
-          />
-          <TextField
-            required
-            id="filled-required-email"
-            label="Email"
-            variant="outlined"
-            size="small"
-            onChange={(event) => {
-              setEmail(event.target.value);
-            }}
-          />
-          <TextField
-            required
-            id="filled-required-phonenumber"
-            label="Phone Number"
-            variant="outlined"
-            size="small"
-            onChange={(event) => {
-              setPhoneNumber(event.target.value);
-            }}
-          />
-          <TextField
-            required
-            id="filled-required-title"
-            label="Title"
-            variant="outlined"
-            size="small"
-            onChange={(event) => {
-              setTitle(event.target.value);
-            }}
-          />
-
-          <TextField
-            required
-            id="filled-number-salary"
-            label="Salary"
-            type="number"
-            variant="outlined"
-            size="small"
-            onChange={(event) => {
-              setSalary(event.target.value);
-            }}
-          />
-          <TextField
-            id="filled-required-hiredate"
-            label="Hire Date"
-            type="date"
-            defaultValue="2021-01-01"
-            size="small"
-            onChange={(event) => {
-              setHireDate(event.target.value);
-            }}
-          />
-        </div>
-        <Button
-          variant="contained"
-          color="primary"
-          size="large"
-          startIcon={<PersonAddIcon />}
-          onClick={addEmployee}
+        ADD NEW EMPLOYEE
+      </Typography>
+      <form className={classes.root} noValidate autoComplete="off">
+        <div
           style={{
-            marginTop: 20,
-            borderRadius: 30,
-            width: 200,
+            display: "flex",
+            flexDirection: "column",
+            marginRight: 0,
           }}
         >
-          Add Employee
-        </Button>
-      </div>
-    </form>
+          <div>
+            <TextField
+              required
+              id="filled-required-firstname"
+              label="First Name"
+              variant="outlined"
+              size="small"
+              onChange={(event) => {
+                setFirstName(event.target.value);
+              }}
+            />
+            <TextField
+              required
+              id="filled-required-lastname"
+              label="Last Name"
+              variant="outlined"
+              size="small"
+              onChange={(event) => {
+                setLastName(event.target.value);
+              }}
+            />
+            <TextField
+              required
+              id="filled-number-age"
+              label="Age"
+              type="number"
+              variant="outlined"
+              size="small"
+              onChange={(event) => {
+                setAge(event.target.value);
+              }}
+            />
+            <TextField
+              required
+              id="filled-required-location"
+              label="Location"
+              variant="outlined"
+              size="small"
+              onChange={(event) => {
+                setLocation(event.target.value);
+              }}
+            />
+            <TextField
+              required
+              id="filled-required-email"
+              label="Email"
+              variant="outlined"
+              size="small"
+              onChange={(event) => {
+                setEmail(event.target.value);
+              }}
+            />
+            <TextField
+              required
+              id="filled-required-phonenumber"
+              label="Phone Number"
+              variant="outlined"
+              size="small"
+              onChange={(event) => {
+                setPhoneNumber(event.target.value);
+              }}
+            />
+            <TextField
+              required
+              id="filled-required-title"
+              label="Title"
+              variant="outlined"
+              size="small"
+              onChange={(event) => {
+                setTitle(event.target.value);
+              }}
+            />
+
+            <TextField
+              required
+              id="filled-number-salary"
+              label="Salary"
+              type="number"
+              variant="outlined"
+              size="small"
+              onChange={(event) => {
+                setSalary(event.target.value);
+              }}
+            />
+            <TextField
+              id="filled-required-hiredate"
+              label="Hire Date"
+              type="date"
+              defaultValue="2021-01-01"
+              size="small"
+              onChange={(event) => {
+                setHireDate(event.target.value);
+              }}
+            />
+          </div>
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            startIcon={<PersonAddIcon />}
+            onClick={addEmployee}
+            style={{
+              marginTop: 20,
+              borderRadius: 30,
+              width: 200,
+            }}
+          >
+            Add Employee
+          </Button>
+        </div>
+      </form>
+    </>
   );
 }
 

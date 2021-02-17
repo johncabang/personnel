@@ -8,12 +8,12 @@ import VpnKeyIcon from "@material-ui/icons/VpnKey";
 const useStyles = makeStyles(() => ({
   root: {
     margin: 50,
+    height: "100%",
     width: "100%",
     display: "flex",
     justifyContent: "center",
     flexDirection: "column",
     alignItems: "center",
-    height: "100%",
   },
   input: {
     margin: 10,

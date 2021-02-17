@@ -57,7 +57,7 @@ function DeleteMenu({ deleteEmployee, rowID }) {
 
   return (
     <div>
-      <Tooltip title="Delete">
+      <Tooltip title="Remove Employee">
         <IconButton
           aria-controls="customized-menu"
           aria-haspopup="true"

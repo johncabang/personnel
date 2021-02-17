@@ -64,74 +64,85 @@ function EmployeeList() {
   };
 
   return (
-    <TableContainer
-      component={Paper}
+    <div
       style={{
-        width: "80%",
-        marginTop: 50,
-        marginBottom: 50,
-        borderRadius: 10,
+        height: "100%",
+        width: "75%",
+        alignItems: "center",
       }}
     >
-      <Table className={classes.table} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>FIRST NAME</StyledTableCell>
-            <StyledTableCell>LAST NAME</StyledTableCell>
-            <StyledTableCell>AGE</StyledTableCell>
-            <StyledTableCell>LOCATION</StyledTableCell>
-            <StyledTableCell>EMAIL</StyledTableCell>
-            <StyledTableCell>PHONE NUMBER</StyledTableCell>
-            <StyledTableCell>TITLE</StyledTableCell>
-            <StyledTableCell>SALARY</StyledTableCell>
-            <StyledTableCell>HIRE DATE</StyledTableCell>
+      <TableContainer
+        component={Paper}
+        style={{
+          height: "75vh",
+          width: "100%",
+          marginTop: 50,
+          // marginBottom: 50,
+          borderRadius: 10,
+        }}
+      >
+        <Table className={classes.table} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell>FIRST NAME</StyledTableCell>
+              <StyledTableCell>LAST NAME</StyledTableCell>
+              <StyledTableCell>AGE</StyledTableCell>
+              <StyledTableCell>LOCATION</StyledTableCell>
+              <StyledTableCell>EMAIL</StyledTableCell>
+              <StyledTableCell>PHONE NUMBER</StyledTableCell>
+              <StyledTableCell>TITLE</StyledTableCell>
+              <StyledTableCell>SALARY</StyledTableCell>
+              <StyledTableCell>HIRE DATE</StyledTableCell>
 
-            {loggedIn && <StyledTableCell width="100"></StyledTableCell>}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {/* {console.log(employeeList)} */}
-
-          {employeeList.map((employee, index) => (
-            // <Employee
-            //   key={employee.id}
-            //   first_name={employee.first_name}
-            //   last_name={employee.last_name}
-            //   title={employee.title}
-            //   location={employee.location}
-            //   age={employee.age}
-            //   salary={employee.salary}
-            // />
-            // TODOS - fix key={index}
-            <StyledTableRow key={index}>
-              {/* {console.log(employee.id)} */}
-              <StyledTableCell component="th" scope="row">
-                {employee.first_name}
-              </StyledTableCell>
-              <StyledTableCell>{employee.last_name}</StyledTableCell>
-              <StyledTableCell>{employee.age}</StyledTableCell>
-              <StyledTableCell>{employee.location}</StyledTableCell>
-              <StyledTableCell>{employee.email}</StyledTableCell>
-              <StyledTableCell>{employee.phone_number}</StyledTableCell>
-              <StyledTableCell>{employee.title}</StyledTableCell>
-              <StyledTableCell>{employee.salary}</StyledTableCell>
-              <StyledTableCell>{employee.hire_date}</StyledTableCell>
               {loggedIn && (
-                <StyledTableCell>
-                  <div style={{ display: "flex" }}>
-                    <UpdateMenu rowID={employee.id} />
-                    <DeleteMenu
-                      deleteEmployee={deleteEmployee}
-                      rowID={employee.id}
-                    />
-                  </div>
-                </StyledTableCell>
+                <StyledTableCell width="100">UPDATE</StyledTableCell>
               )}
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {/* {console.log(employeeList)} */}
+
+            {employeeList.map((employee, index) => (
+              // <Employee
+              //   key={employee.id}
+              //   first_name={employee.first_name}
+              //   last_name={employee.last_name}
+              //   title={employee.title}
+              //   location={employee.location}
+              //   age={employee.age}
+              //   salary={employee.salary}
+              // />
+              // TODOS - fix key={index}
+              <StyledTableRow key={index}>
+                {/* {console.log(employee.id)} */}
+                <StyledTableCell component="th" scope="row">
+                  {employee.first_name}
+                </StyledTableCell>
+                <StyledTableCell>{employee.last_name}</StyledTableCell>
+                <StyledTableCell>{employee.age}</StyledTableCell>
+                <StyledTableCell>{employee.location}</StyledTableCell>
+                <StyledTableCell>{employee.email}</StyledTableCell>
+                <StyledTableCell>{employee.phone_number}</StyledTableCell>
+                <StyledTableCell>{employee.title}</StyledTableCell>
+                <StyledTableCell>{employee.salary}</StyledTableCell>
+                <StyledTableCell>{employee.hire_date}</StyledTableCell>
+                {loggedIn && (
+                  <StyledTableCell>
+                    <div style={{ display: "flex" }}>
+                      <UpdateMenu rowID={employee.id} />
+                      <DeleteMenu
+                        deleteEmployee={deleteEmployee}
+                        rowID={employee.id}
+                      />
+                    </div>
+                  </StyledTableCell>
+                )}
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   );
 }
 

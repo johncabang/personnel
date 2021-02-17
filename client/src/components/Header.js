@@ -63,7 +63,7 @@ function Header() {
               <Button color="inherit" style={{ width: 70, height: 40 }}>
                 ADMIN
               </Button>
-              <Tooltip title="Add Employee">
+              <Tooltip title="Add New Employee">
                 <Button
                   component={Link}
                   to="/addemployee"
@@ -73,15 +73,17 @@ function Header() {
                   <PersonAddIcon />
                 </Button>
               </Tooltip>
-              <Button
-                component={Link}
-                to="/login"
-                onClick={logout}
-                color="inherit"
-                style={{ width: 70, height: 40 }}
-              >
-                Logout
-              </Button>
+              <Tooltip title="Logout">
+                <Button
+                  component={Link}
+                  to="/login"
+                  onClick={logout}
+                  color="inherit"
+                  style={{ width: 70, height: 40 }}
+                >
+                  Logout
+                </Button>
+              </Tooltip>
             </div>
           ) : (
             <Button

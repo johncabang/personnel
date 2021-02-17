@@ -81,7 +81,7 @@ function UpdateMenu({ rowID }) {
 
   return (
     <div>
-      <Tooltip title="Update">
+      <Tooltip title="Update Salary">
         <IconButton
           aria-controls="customized-menu"
           aria-haspopup="true"
