@@ -15,7 +15,9 @@ const useStyles = makeStyles((theme) => ({
     padding: 20,
     borderRadius: 10,
     marginTop: 50,
+    marginBottom: 50,
     width: "80%",
+    height: "100%",
   },
 }));
 

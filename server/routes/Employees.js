@@ -14,15 +14,27 @@ router.get("/employees", (req, res) => {
 });
 
 router.post("/create", (req, res) => {
-  const first_name = req.body.first_name;
-  const last_name = req.body.last_name;
-  const age = req.body.age;
-  const location = req.body.location;
-  const email = req.body.email;
-  const phone_number = req.body.phone_number;
-  const title = req.body.title;
-  const salary = req.body.salary;
-  const hire_date = req.body.hire_date;
+  const {
+    first_name,
+    last_name,
+    age,
+    location,
+    email,
+    phone_number,
+    title,
+    salary,
+    hire_date,
+  } = req.body;
+
+  // const first_name = req.body.first_name;
+  // const last_name = req.body.last_name;
+  // const age = req.body.age;
+  // const location = req.body.location;
+  // const email = req.body.email;
+  // const phone_number = req.body.phone_number;
+  // const title = req.body.title;
+  // const salary = req.body.salary;
+  // const hire_date = req.body.hire_date;
 
   db.query(
     "INSERT INTO employees (first_name, last_name, age, location, email, phone_number, title, salary, hire_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",

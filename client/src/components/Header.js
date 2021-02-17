@@ -2,7 +2,15 @@ import { useState, useEffect } from "react";
 import { Link, withRouter, useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Button, Toolbar, Typography } from "@material-ui/core/";
+import {
+  AppBar,
+  Button,
+  Toolbar,
+  Tooltip,
+  Typography,
+} from "@material-ui/core/";
+import PersonAddIcon from "@material-ui/icons/PersonAdd";
+
 import logo from "../assets/images/personnel-white-logo.png";
 
 const useStyles = makeStyles(() => ({
@@ -52,14 +60,19 @@ function Header() {
         <div>
           {loggedIn ? (
             <div style={{ display: "flex", alignItems: "center" }}>
-              <Button
-                component={Link}
-                to="/"
-                color="inherit"
-                style={{ width: 70, height: 40 }}
-              >
+              <Button color="inherit" style={{ width: 70, height: 40 }}>
                 ADMIN
               </Button>
+              <Tooltip title="Add Employee">
+                <Button
+                  component={Link}
+                  to="/addemployee"
+                  color="inherit"
+                  style={{ width: 70, height: 40 }}
+                >
+                  <PersonAddIcon />
+                </Button>
+              </Tooltip>
               <Button
                 component={Link}
                 to="/login"

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Axios from "axios";
 
 import { EmployeeContext } from "./EmployeeContext";
@@ -43,6 +43,12 @@ const useStyles = makeStyles({
 
 function EmployeeList() {
   const [employeeList, setEmployeeList] = useContext(EmployeeContext);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    setLoggedIn(localStorage.getItem("loggedIn"));
+  }, [localStorage.getItem("loggedIn")]);
+
   const classes = useStyles();
 
   const deleteEmployee = (id) => {
@@ -79,7 +85,8 @@ function EmployeeList() {
             <StyledTableCell>TITLE</StyledTableCell>
             <StyledTableCell>SALARY</StyledTableCell>
             <StyledTableCell>HIRE DATE</StyledTableCell>
-            <StyledTableCell width="100"></StyledTableCell>
+
+            {loggedIn && <StyledTableCell width="100"></StyledTableCell>}
           </TableRow>
         </TableHead>
         <TableBody>
@@ -109,15 +116,17 @@ function EmployeeList() {
               <StyledTableCell>{employee.title}</StyledTableCell>
               <StyledTableCell>{employee.salary}</StyledTableCell>
               <StyledTableCell>{employee.hire_date}</StyledTableCell>
-              <StyledTableCell>
-                <div style={{ display: "flex" }}>
-                  <UpdateMenu rowID={employee.id} />
-                  <DeleteMenu
-                    deleteEmployee={deleteEmployee}
-                    rowID={employee.id}
-                  />
-                </div>
-              </StyledTableCell>
+              {loggedIn && (
+                <StyledTableCell>
+                  <div style={{ display: "flex" }}>
+                    <UpdateMenu rowID={employee.id} />
+                    <DeleteMenu
+                      deleteEmployee={deleteEmployee}
+                      rowID={employee.id}
+                    />
+                  </div>
+                </StyledTableCell>
+              )}
             </StyledTableRow>
           ))}
         </TableBody>
