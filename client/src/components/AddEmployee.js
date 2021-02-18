@@ -18,8 +18,9 @@ const useStyles = makeStyles((theme) => ({
     borderBottomRightRadius: 10,
     // marginTop: 50,
     marginBottom: 50,
-    width: "75%",
+    width: "85%",
     height: "100%",
+    fontSize: 12,
   },
 }));
 
@@ -81,10 +82,11 @@ function AddEmployee() {
           color: "white",
           background: "black",
           padding: 16,
-          width: "75%",
+          width: "85%",
           marginTop: 50,
           borderTopLeftRadius: 10,
           borderTopRightRadius: 10,
+          fontSize: 12,
         }}
       >
         ADD NEW EMPLOYEE
@@ -191,9 +193,11 @@ function AddEmployee() {
               }}
             />
             <TextField
+              required
               id="filled-required-hiredate"
               label="Hire Date"
               type="date"
+              variant="outlined"
               defaultValue="2021-01-01"
               size="small"
               onChange={(event) => {

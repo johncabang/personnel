@@ -20,9 +20,10 @@ const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
+    fontSize: 12,
   },
   body: {
-    fontSize: 14,
+    fontSize: 12,
   },
 }))(TableCell);
 
@@ -39,7 +40,6 @@ const useStyles = makeStyles({
     minWidth: 650,
   },
 });
-// import Employee from "./Employee";
 
 function EmployeeList() {
   const [employeeList, setEmployeeList] = useContext(EmployeeContext);
@@ -66,8 +66,8 @@ function EmployeeList() {
   return (
     <div
       style={{
-        height: "100%",
-        width: "75%",
+        // height: "100%",
+        width: "85%",
         alignItems: "center",
       }}
     >
@@ -77,7 +77,7 @@ function EmployeeList() {
           height: "75vh",
           width: "100%",
           marginTop: 50,
-          // marginBottom: 50,
+          marginBottom: 50,
           borderRadius: 10,
         }}
       >
