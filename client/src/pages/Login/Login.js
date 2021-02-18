@@ -52,7 +52,7 @@ function Login() {
     });
   };
 
-  // Check is User is Authenticated
+  // Check if User is Authenticated
 
   // const userAuthenticated = () => {
   //   Axios.get("http://localhost:3001/users/isUserAuth", {

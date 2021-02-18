@@ -63,6 +63,7 @@ function UpdateMenu({ rowID }) {
                 email: employee.email,
                 phone_number: employee.phone_number,
                 title: employee.title,
+                manager: employee.manager,
                 salary: newSalary,
                 hire_date: employee.hire_date,
               }

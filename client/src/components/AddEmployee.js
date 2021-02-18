@@ -1,5 +1,6 @@
 import Axios from "axios";
 import { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { EmployeeContext } from "./EmployeeContext";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, TextField, Typography } from "@material-ui/core/";
@@ -23,6 +24,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function AddEmployee() {
+  const history = useHistory();
+
   const [employeeList, setEmployeeList] = useContext(EmployeeContext);
 
   const [firstName, setFirstName] = useState("");
@@ -32,6 +35,7 @@ function AddEmployee() {
   const [email, setEmail] = useState(0);
   const [phoneNumber, setPhoneNumber] = useState(0);
   const [title, setTitle] = useState("");
+  const [manager, setManager] = useState("");
   const [salary, setSalary] = useState(0);
   const [hireDate, setHireDate] = useState(0);
 
@@ -44,6 +48,7 @@ function AddEmployee() {
       email: email,
       phone_number: phoneNumber,
       title: title,
+      manager: manager,
       salary: salary,
       hire_date: hireDate,
     }).then(() => {
@@ -57,10 +62,12 @@ function AddEmployee() {
           email: email,
           phone_number: phoneNumber,
           title: title,
+          manager: manager,
           salary: salary,
           hire_date: hireDate,
         },
       ]);
+      history.push("/");
     });
   };
 
@@ -162,7 +169,16 @@ function AddEmployee() {
                 setTitle(event.target.value);
               }}
             />
-
+            <TextField
+              required
+              id="filled-required-manager"
+              label="Manager ID"
+              variant="outlined"
+              size="small"
+              onChange={(event) => {
+                setManager(event.target.value);
+              }}
+            />
             <TextField
               required
               id="filled-number-salary"

@@ -91,6 +91,7 @@ function EmployeeList() {
               <StyledTableCell>EMAIL</StyledTableCell>
               <StyledTableCell>PHONE NUMBER</StyledTableCell>
               <StyledTableCell>TITLE</StyledTableCell>
+              <StyledTableCell>MANAGER ID</StyledTableCell>
               <StyledTableCell>SALARY</StyledTableCell>
               <StyledTableCell>HIRE DATE</StyledTableCell>
 
@@ -108,6 +109,7 @@ function EmployeeList() {
               //   first_name={employee.first_name}
               //   last_name={employee.last_name}
               //   title={employee.title}
+              //   manager={employee.manager}
               //   location={employee.location}
               //   age={employee.age}
               //   salary={employee.salary}
@@ -124,6 +126,7 @@ function EmployeeList() {
                 <StyledTableCell>{employee.email}</StyledTableCell>
                 <StyledTableCell>{employee.phone_number}</StyledTableCell>
                 <StyledTableCell>{employee.title}</StyledTableCell>
+                <StyledTableCell>{employee.manager}</StyledTableCell>
                 <StyledTableCell>{employee.salary}</StyledTableCell>
                 <StyledTableCell>{employee.hire_date}</StyledTableCell>
                 {loggedIn && (
