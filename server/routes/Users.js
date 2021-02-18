@@ -83,7 +83,6 @@ router.post("/login", (req, res) => {
   });
 });
 
-// Middleware
 // VERIFY if user/email has correct webtoken
 
 const verifyJWT = (req, res, next) => {

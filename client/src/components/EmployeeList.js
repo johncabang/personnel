@@ -13,8 +13,8 @@ import {
   TableRow,
 } from "@material-ui/core/";
 
-import DeleteMenu from "./DeleteMenu";
 import UpdateMenu from "./UpdateMenu";
+import AlertDelete from "./AlertDelete";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -133,7 +133,7 @@ function EmployeeList() {
                   <StyledTableCell>
                     <div style={{ display: "flex" }}>
                       <UpdateMenu rowID={employee.id} />
-                      <DeleteMenu
+                      <AlertDelete
                         deleteEmployee={deleteEmployee}
                         rowID={employee.id}
                       />
