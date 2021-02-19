@@ -8,6 +8,12 @@ import PersonAddIcon from "@material-ui/icons/PersonAdd";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    height: "100%",
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+  },
+  form: {
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
       width: "25ch",
@@ -18,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
     borderBottomRightRadius: 10,
     marginBottom: 50,
     width: "85%",
-    height: "100%",
   },
 }));
 
@@ -73,30 +78,26 @@ function AddEmployee() {
   const classes = useStyles();
 
   return (
-    <>
-      <Typography
-        variant="body1"
-        style={{
-          color: "white",
-          background: "black",
-          padding: 16,
-          width: "85%",
-          marginTop: 50,
-          borderTopLeftRadius: 10,
-          borderTopRightRadius: 10,
-          fontSize: 12,
-        }}
-      >
-        ADD NEW EMPLOYEE
-      </Typography>
-      <form className={classes.root} noValidate autoComplete="off">
-        <div
-        // style={{
-        //   display: "flex",
-        //   flexDirection: "column",
-        //   marginRight: 0,
-        // }}
+    <div className={classes.root}>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <Typography
+          variant="body1"
+          style={{
+            color: "white",
+            background: "black",
+            padding: 16,
+            width: "85%",
+            marginTop: 50,
+            borderTopLeftRadius: 10,
+            borderTopRightRadius: 10,
+            fontSize: 12,
+          }}
         >
+          ADD NEW EMPLOYEE
+        </Typography>
+      </div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <form className={classes.form} noValidate autoComplete="off">
           <div>
             <TextField
               required
@@ -213,14 +214,13 @@ function AddEmployee() {
               marginTop: 20,
               marginLeft: 8,
               borderRadius: 5,
-              width: 195,
             }}
           >
             <Typography variant="body2">Add Employee</Typography>
           </Button>
-        </div>
-      </form>
-    </>
+        </form>
+      </div>
+    </div>
   );
 }
 

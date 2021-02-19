@@ -22,7 +22,7 @@ const theme = createMuiTheme({
     },
     MuiInputLabel: {
       root: {
-        fontSize: 10,
+        fontSize: 12,
       },
     },
   },

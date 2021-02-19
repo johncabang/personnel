@@ -8,10 +8,11 @@ import Home from "./pages/Home/Home";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import AddEmployee from "./components/AddEmployee";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
-    <div className="App" style={{ height: "100vh" }}>
+    <div className="App">
       <EmployeeProvider>
         <Header />
         <Switch>
@@ -19,6 +20,9 @@ function App() {
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/addemployee" component={AddEmployee} />
+          <Route path="*">
+            <NotFoundPage />
+          </Route>
         </Switch>
         <Footer />
       </EmployeeProvider>
