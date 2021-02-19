@@ -63,7 +63,7 @@ function AlertDelete({ deleteEmployee, rowID }) {
             color="secondary"
             autoFocus
           >
-            Delete
+            Delete Employee
           </Button>
         </DialogActions>
       </Dialog>
