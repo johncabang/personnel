@@ -59,6 +59,7 @@ function AlertDelete({ deleteEmployee, rowID }) {
           <Button
             onClick={() => {
               deleteEmployee(rowID);
+              handleClose();
             }}
             color="secondary"
             autoFocus
