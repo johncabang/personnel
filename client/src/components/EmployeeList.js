@@ -32,8 +32,17 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 
 const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
+  root: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
+    width: "100%",
+  },
+  container: {
+    height: "75vh",
+    width: "85%",
+    borderRadius: 10,
   },
 });
 
@@ -60,23 +69,8 @@ function EmployeeList() {
   };
 
   return (
-    <div
-      style={{
-        // height: "100%",
-        width: "85%",
-        alignItems: "center",
-      }}
-    >
-      <TableContainer
-        component={Paper}
-        style={{
-          height: "75vh",
-          width: "100%",
-          marginTop: 50,
-          marginBottom: 50,
-          borderRadius: 10,
-        }}
-      >
+    <div className={classes.root}>
+      <TableContainer className={classes.container} component={Paper}>
         <Table
           className={classes.table}
           size="small"
@@ -94,7 +88,6 @@ function EmployeeList() {
               <StyledTableCell>MANAGER ID</StyledTableCell>
               <StyledTableCell>SALARY</StyledTableCell>
               <StyledTableCell>HIRE DATE</StyledTableCell>
-
               {loggedIn && (
                 <StyledTableCell width="100">UPDATE</StyledTableCell>
               )}
@@ -102,18 +95,7 @@ function EmployeeList() {
           </TableHead>
           <TableBody>
             {/* {console.log(employeeList)} */}
-
             {employeeList.map((employee, index) => (
-              // <Employee
-              //   key={employee.id}
-              //   first_name={employee.first_name}
-              //   last_name={employee.last_name}
-              //   title={employee.title}
-              //   manager={employee.manager}
-              //   location={employee.location}
-              //   age={employee.age}
-              //   salary={employee.salary}
-              // />
               // TODOS - fix key={index}
               <StyledTableRow key={index}>
                 {/* {console.log(employee.id)} */}

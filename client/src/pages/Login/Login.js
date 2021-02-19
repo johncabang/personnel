@@ -7,17 +7,22 @@ import VpnKeyIcon from "@material-ui/icons/VpnKey";
 
 const useStyles = makeStyles(() => ({
   root: {
-    margin: 50,
-    height: "100%",
-    width: "100%",
     display: "flex",
-    justifyContent: "center",
-    flexDirection: "column",
+    height: "100%",
     alignItems: "center",
+  },
+  form: {
+    display: "flex",
+    flexDirection: "column",
+    background: "white",
+    borderRadius: 10,
+    padding: 30,
+    minWidth: 300,
+    margin: 50,
+    width: "100%",
   },
   input: {
     margin: 10,
-    width: 300,
   },
 }));
 
@@ -75,17 +80,8 @@ function Login() {
   const classes = useStyles();
 
   return (
-    <form className={classes.root} noValidate autoComplete="off">
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          borderRadius: 10,
-          padding: 30,
-          background: "white",
-          minWidth: 300,
-        }}
-      >
+    <div className={classes.root}>
+      <form className={classes.form} noValidate autoComplete="off">
         <Typography variant="body1" style={{ margin: 10 }}>
           ADMIN LOGIN
         </Typography>
@@ -138,8 +134,8 @@ function Login() {
         >
           LOGIN
         </Button>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }
 

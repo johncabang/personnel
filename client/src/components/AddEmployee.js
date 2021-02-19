@@ -8,10 +8,10 @@ import PersonAddIcon from "@material-ui/icons/PersonAdd";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: "100%",
-    width: "100%",
     display: "flex",
     flexDirection: "column",
+    height: "100%",
+    width: "100%",
   },
   form: {
     "& .MuiTextField-root": {
@@ -85,9 +85,10 @@ function AddEmployee() {
           style={{
             color: "white",
             background: "black",
-            padding: 16,
+            padding: 10,
+            paddingLeft: 14,
             width: "85%",
-            marginTop: 50,
+            marginTop: 40,
             borderTopLeftRadius: 10,
             borderTopRightRadius: 10,
             fontSize: 12,
