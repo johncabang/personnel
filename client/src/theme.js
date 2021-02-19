@@ -11,6 +11,21 @@ const theme = createMuiTheme({
       main: "#ff5252",
     },
   },
+  typography: {
+    fontSize: 12,
+  },
+  overrides: {
+    MuiInputBase: {
+      root: {
+        fontSize: 12,
+      },
+    },
+    MuiInputLabel: {
+      root: {
+        fontSize: 10,
+      },
+    },
+  },
 });
 
 export default theme;

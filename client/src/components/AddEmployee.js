@@ -16,11 +16,9 @@ const useStyles = makeStyles((theme) => ({
     padding: 20,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
-    // marginTop: 50,
     marginBottom: 50,
     width: "85%",
     height: "100%",
-    fontSize: 12,
   },
 }));
 
@@ -77,7 +75,7 @@ function AddEmployee() {
   return (
     <>
       <Typography
-        variant="body2"
+        variant="body1"
         style={{
           color: "white",
           background: "black",
@@ -93,11 +91,11 @@ function AddEmployee() {
       </Typography>
       <form className={classes.root} noValidate autoComplete="off">
         <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            marginRight: 0,
-          }}
+        // style={{
+        //   display: "flex",
+        //   flexDirection: "column",
+        //   marginRight: 0,
+        // }}
         >
           <div>
             <TextField
@@ -213,11 +211,12 @@ function AddEmployee() {
             onClick={addEmployee}
             style={{
               marginTop: 20,
-              borderRadius: 30,
-              width: 200,
+              marginLeft: 8,
+              borderRadius: 5,
+              width: 195,
             }}
           >
-            Add Employee
+            <Typography variant="body2">Add Employee</Typography>
           </Button>
         </div>
       </form>

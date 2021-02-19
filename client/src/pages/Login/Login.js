@@ -83,9 +83,10 @@ function Login() {
           borderRadius: 10,
           padding: 30,
           background: "white",
+          minWidth: 300,
         }}
       >
-        <Typography variant="h6" style={{ margin: 10 }}>
+        <Typography variant="body1" style={{ margin: 10 }}>
           ADMIN LOGIN
         </Typography>
         <TextField
@@ -129,7 +130,9 @@ function Login() {
           startIcon={<VpnKeyIcon />}
           onClick={login}
           style={{
-            margin: 10,
+            marginTop: 20,
+            marginRight: 10,
+            marginLeft: 10,
             width: 300,
           }}
         >

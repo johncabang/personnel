@@ -20,10 +20,10 @@ const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
-    fontSize: 12,
+    // fontSize: 12,
   },
   body: {
-    fontSize: 12,
+    // fontSize: 12,
   },
 }))(TableCell);
 
@@ -81,8 +81,12 @@ function EmployeeList() {
           borderRadius: 10,
         }}
       >
-        <Table className={classes.table} aria-label="customized table">
-          <TableHead>
+        <Table
+          className={classes.table}
+          size="small"
+          aria-label="customized table"
+        >
+          <TableHead style={{ whiteSpace: "nowrap" }}>
             <TableRow>
               <StyledTableCell>FIRST NAME</StyledTableCell>
               <StyledTableCell>LAST NAME</StyledTableCell>
