@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { EmployeeContext } from "./EmployeeContext";
+import { EmployeeContext } from "../hooks/EmployeeContext";
 import Axios from "axios";
 import {
   Button,
@@ -212,7 +212,7 @@ function AlertUpdate({ rowID }) {
               updateEmployeeSalary(rowID);
               handleClose();
             }}
-            color="primary"
+            color="secondary"
             autoFocus
           >
             Update

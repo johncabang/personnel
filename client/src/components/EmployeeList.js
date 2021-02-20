@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
-import Axios from "axios";
 
-import { EmployeeContext } from "./EmployeeContext";
+import { EmployeeContext } from "../hooks/EmployeeContext";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import {
   Paper,
@@ -56,18 +55,6 @@ function EmployeeList() {
 
   const classes = useStyles();
 
-  const deleteEmployee = (id) => {
-    Axios.delete(`http://localhost:3001/employees/delete/${id}`).then(
-      (response) => {
-        setEmployeeList(
-          employeeList.filter((employee) => {
-            return employee.id != id;
-          })
-        );
-      }
-    );
-  };
-
   return (
     <div className={classes.root}>
       <TableContainer className={classes.container} component={Paper}>
@@ -115,10 +102,7 @@ function EmployeeList() {
                   <StyledTableCell>
                     <div style={{ display: "flex" }}>
                       <AlertUpdate rowID={employee.id} />
-                      <AlertDelete
-                        deleteEmployee={deleteEmployee}
-                        rowID={employee.id}
-                      />
+                      <AlertDelete rowID={employee.id} />
                     </div>
                   </StyledTableCell>
                 )}

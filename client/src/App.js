@@ -1,6 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 
-import { EmployeeProvider } from "./components/EmployeeContext";
+import { EmployeeProvider } from "./hooks/EmployeeContext";
 import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";

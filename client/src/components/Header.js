@@ -5,10 +5,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import {
   AppBar,
   Button,
+  IconButton,
   Toolbar,
   Tooltip,
   Typography,
 } from "@material-ui/core/";
+import HomeIcon from "@material-ui/icons/Home";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 
 import logo from "../assets/images/personnel-white-logo.png";
@@ -60,18 +62,18 @@ function Header() {
         <div>
           {loggedIn ? (
             <div style={{ display: "flex", alignItems: "center" }}>
-              <Button color="inherit" style={{ width: 70, height: 40 }}>
+              {/* <Button color="inherit" style={{ width: 70, height: 40 }}>
                 ADMIN
-              </Button>
+              </Button> */}
+              <Tooltip title="Home">
+                <IconButton component={Link} to="/" color="inherit">
+                  <HomeIcon />
+                </IconButton>
+              </Tooltip>
               <Tooltip title="Add New Employee">
-                <Button
-                  component={Link}
-                  to="/addemployee"
-                  color="inherit"
-                  style={{ width: 70, height: 40 }}
-                >
+                <IconButton component={Link} to="/addemployee" color="inherit">
                   <PersonAddIcon />
-                </Button>
+                </IconButton>
               </Tooltip>
               <Tooltip title="Logout">
                 <Button

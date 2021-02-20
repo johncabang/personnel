@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import Axios from "axios";
+import { EmployeeContext } from "../hooks/EmployeeContext";
 
 import {
   Button,
@@ -13,8 +15,21 @@ import {
 
 import DeleteIcon from "@material-ui/icons/Delete";
 
-function AlertDelete({ deleteEmployee, rowID }) {
+function AlertDelete({ rowID }) {
   const [open, setOpen] = useState(false);
+  const [employeeList, setEmployeeList] = useContext(EmployeeContext);
+
+  const deleteEmployee = (id) => {
+    Axios.delete(`http://localhost:3001/employees/delete/${id}`).then(
+      (response) => {
+        setEmployeeList(
+          employeeList.filter((employee) => {
+            return employee.id != id;
+          })
+        );
+      }
+    );
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
