@@ -13,4 +13,7 @@
 ### Screenshots
 
 !["personnel"](https://github.com/johncabang/personnel/blob/main/docs/personnel-004.png?raw=true)
-!["personnel"](https://github.com/johncabang/personnel/blob/main/docs/personnel-003.png?raw=true)
+!["personnel"](https://github.com/johncabang/personnel/blob/main/docs/personnel-005.png?raw=true)
+!["personnel"](https://github.com/johncabang/personnel/blob/main/docs/personnel-006.png?raw=true)
+!["personnel"](https://github.com/johncabang/personnel/blob/main/docs/personnel-007.png?raw=true)
+!["personnel"](https://github.com/johncabang/personnel/blob/main/docs/personnel-008.png?raw=true)

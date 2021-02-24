@@ -3,7 +3,15 @@ import { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { EmployeeContext } from "../hooks/EmployeeContext";
 import { makeStyles } from "@material-ui/core/styles";
-import { Button, TextField, Tooltip, Typography } from "@material-ui/core/";
+import {
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  TextField,
+  Tooltip,
+  Typography,
+} from "@material-ui/core/";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 
 const useStyles = makeStyles((theme) => ({
@@ -98,130 +106,135 @@ function AddEmployee() {
         </Typography>
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <form className={classes.form} noValidate autoComplete="off">
-          <div>
-            <TextField
-              required
-              id="filled-required-firstname"
-              label="First Name"
-              variant="outlined"
-              size="small"
-              onChange={(event) => {
-                setFirstName(event.target.value);
-              }}
-            />
-            <TextField
-              required
-              id="filled-required-lastname"
-              label="Last Name"
-              variant="outlined"
-              size="small"
-              onChange={(event) => {
-                setLastName(event.target.value);
-              }}
-            />
-            <TextField
-              required
-              id="filled-number-age"
-              label="Age"
-              type="number"
-              variant="outlined"
-              size="small"
-              onChange={(event) => {
-                setAge(event.target.value);
-              }}
-            />
-            <TextField
-              required
-              id="filled-required-location"
-              label="Location"
-              variant="outlined"
-              size="small"
-              onChange={(event) => {
-                setLocation(event.target.value);
-              }}
-            />
-            <TextField
-              required
-              id="filled-required-email"
-              label="Email"
-              variant="outlined"
-              size="small"
-              onChange={(event) => {
-                setEmail(event.target.value);
-              }}
-            />
-            <TextField
-              required
-              id="filled-required-phonenumber"
-              label="Phone Number"
-              variant="outlined"
-              size="small"
-              onChange={(event) => {
-                setPhoneNumber(event.target.value);
-              }}
-            />
-            <TextField
-              required
-              id="filled-required-title"
-              label="Title"
-              variant="outlined"
-              size="small"
-              onChange={(event) => {
-                setTitle(event.target.value);
-              }}
-            />
-            <TextField
-              required
-              id="filled-required-manager"
-              label="Manager ID"
-              variant="outlined"
-              size="small"
-              onChange={(event) => {
-                setManager(event.target.value);
-              }}
-            />
-            <TextField
-              required
-              id="filled-number-salary"
-              label="Salary"
-              type="number"
-              variant="outlined"
-              size="small"
-              onChange={(event) => {
-                setSalary(event.target.value);
-              }}
-            />
-            <TextField
-              required
-              id="filled-required-hiredate"
-              label="Hire Date"
-              type="date"
-              variant="outlined"
-              defaultValue="2021-01-01"
-              size="small"
-              onChange={(event) => {
-                setHireDate(event.target.value);
-              }}
-            />
-          </div>
-          <Tooltip title="Add Employee">
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              startIcon={<PersonAddIcon />}
-              onClick={addEmployee}
-              style={{
-                marginTop: 20,
-                marginLeft: 8,
-                borderRadius: 5,
-              }}
-            >
-              <Typography variant="body2">Add Employee</Typography>
-            </Button>
-          </Tooltip>
-        </form>
+        <Card className={classes.form}>
+          <CardHeader subheader="ADD NEW EMPLOYEE" />
+          <CardContent>
+            <form noValidate autoComplete="off">
+              <div>
+                <TextField
+                  required
+                  id="filled-required-firstname"
+                  label="First Name"
+                  variant="outlined"
+                  size="small"
+                  onChange={(event) => {
+                    setFirstName(event.target.value);
+                  }}
+                />
+                <TextField
+                  required
+                  id="filled-required-lastname"
+                  label="Last Name"
+                  variant="outlined"
+                  size="small"
+                  onChange={(event) => {
+                    setLastName(event.target.value);
+                  }}
+                />
+                <TextField
+                  required
+                  id="filled-number-age"
+                  label="Age"
+                  type="number"
+                  variant="outlined"
+                  size="small"
+                  onChange={(event) => {
+                    setAge(event.target.value);
+                  }}
+                />
+                <TextField
+                  required
+                  id="filled-required-location"
+                  label="Location"
+                  variant="outlined"
+                  size="small"
+                  onChange={(event) => {
+                    setLocation(event.target.value);
+                  }}
+                />
+                <TextField
+                  required
+                  id="filled-required-email"
+                  label="Email"
+                  variant="outlined"
+                  size="small"
+                  onChange={(event) => {
+                    setEmail(event.target.value);
+                  }}
+                />
+                <TextField
+                  required
+                  id="filled-required-phonenumber"
+                  label="Phone Number"
+                  variant="outlined"
+                  size="small"
+                  onChange={(event) => {
+                    setPhoneNumber(event.target.value);
+                  }}
+                />
+                <TextField
+                  required
+                  id="filled-required-title"
+                  label="Title"
+                  variant="outlined"
+                  size="small"
+                  onChange={(event) => {
+                    setTitle(event.target.value);
+                  }}
+                />
+                <TextField
+                  required
+                  id="filled-required-manager"
+                  label="Manager ID"
+                  variant="outlined"
+                  size="small"
+                  onChange={(event) => {
+                    setManager(event.target.value);
+                  }}
+                />
+                <TextField
+                  required
+                  id="filled-number-salary"
+                  label="Salary"
+                  type="number"
+                  variant="outlined"
+                  size="small"
+                  onChange={(event) => {
+                    setSalary(event.target.value);
+                  }}
+                />
+                <TextField
+                  required
+                  id="filled-required-hiredate"
+                  label="Hire Date"
+                  type="date"
+                  variant="outlined"
+                  defaultValue="2021-01-01"
+                  size="small"
+                  onChange={(event) => {
+                    setHireDate(event.target.value);
+                  }}
+                />
+              </div>
+              <Tooltip title="Add Employee">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  size="large"
+                  startIcon={<PersonAddIcon />}
+                  onClick={addEmployee}
+                  style={{
+                    marginTop: 20,
+                    marginLeft: 8,
+                    borderRadius: 5,
+                  }}
+                >
+                  <Typography variant="body2">Add Employee</Typography>
+                </Button>
+              </Tooltip>
+            </form>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
