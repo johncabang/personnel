@@ -75,9 +75,8 @@ function EmployeeList() {
               <StyledTableCell>MANAGER ID</StyledTableCell>
               <StyledTableCell>SALARY</StyledTableCell>
               <StyledTableCell>HIRE DATE</StyledTableCell>
-              {loggedIn && (
-                <StyledTableCell width="100">UPDATE</StyledTableCell>
-              )}
+              {/* {loggedIn && <StyledTableCell width="100">EDIT</StyledTableCell>} */}
+              {loggedIn && <StyledTableCell width="100"></StyledTableCell>}
             </TableRow>
           </TableHead>
           <TableBody>

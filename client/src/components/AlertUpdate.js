@@ -64,7 +64,7 @@ function AlertUpdate({ rowID }) {
 
   return (
     <div className={classes.root}>
-      <Tooltip title="Update ">
+      <Tooltip title="Edit ">
         <IconButton
           aria-controls="customized-menu"
           aria-haspopup="true"
@@ -83,7 +83,9 @@ function AlertUpdate({ rowID }) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">Update employee</DialogTitle>
+        <DialogTitle id="alert-dialog-title">
+          Edit employee information
+        </DialogTitle>
         <DialogContent>
           {/* <DialogContentText id="alert-dialog-description">
             Update employee?

@@ -216,22 +216,22 @@ function AddEmployee() {
                   }}
                 />
               </div>
-              <Tooltip title="Add Employee">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  size="large"
-                  startIcon={<PersonAddIcon />}
-                  onClick={addEmployee}
-                  style={{
-                    marginTop: 20,
-                    marginLeft: 8,
-                    borderRadius: 5,
-                  }}
-                >
-                  <Typography variant="body2">Add Employee</Typography>
-                </Button>
-              </Tooltip>
+              {/* <Tooltip title="Add Employee"> */}
+              <Button
+                variant="contained"
+                color="primary"
+                size="large"
+                startIcon={<PersonAddIcon />}
+                onClick={addEmployee}
+                style={{
+                  marginTop: 20,
+                  marginLeft: 8,
+                  borderRadius: 5,
+                }}
+              >
+                <Typography variant="body2">Add Employee</Typography>
+              </Button>
+              {/* </Tooltip> */}
             </form>
           </CardContent>
         </Card>
