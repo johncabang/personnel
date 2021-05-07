@@ -1,5 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 
+import Moment from "react-moment";
+
 import { EmployeeContext } from "../hooks/EmployeeContext";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import {
@@ -96,7 +98,9 @@ function EmployeeList() {
                 <StyledTableCell>{employee.title}</StyledTableCell>
                 <StyledTableCell>{employee.manager}</StyledTableCell>
                 <StyledTableCell>{employee.salary}</StyledTableCell>
-                <StyledTableCell>{employee.hire_date}</StyledTableCell>
+                <StyledTableCell>
+                  <Moment format="YYYY/MM/DD">{employee.hire_date}</Moment>
+                </StyledTableCell>
                 {loggedIn && (
                   <StyledTableCell>
                     <div style={{ display: "flex" }}>
