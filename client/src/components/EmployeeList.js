@@ -99,12 +99,24 @@ function EmployeeList() {
                 <StyledTableCell>{employee.manager}</StyledTableCell>
                 <StyledTableCell>{employee.salary}</StyledTableCell>
                 <StyledTableCell>
-                  <Moment format="YYYY/MM/DD">{employee.hire_date}</Moment>
+                  <Moment format="YYYY-MM-DD">{employee.hire_date}</Moment>
                 </StyledTableCell>
                 {loggedIn && (
                   <StyledTableCell>
                     <div style={{ display: "flex" }}>
-                      <AlertUpdate rowID={employee.id} />
+                      <AlertUpdate
+                        rowID={employee.id}
+                        firstName={employee.first_name}
+                        lastName={employee.last_name}
+                        age={employee.age}
+                        location={employee.location}
+                        email={employee.email}
+                        phoneNumber={employee.phone_number}
+                        title={employee.title}
+                        manager={employee.manager}
+                        salary={employee.salary}
+                        hireDate={employee.hire_date}
+                      />
                       <AlertDelete rowID={employee.id} />
                     </div>
                   </StyledTableCell>

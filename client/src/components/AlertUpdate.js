@@ -7,12 +7,14 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
+  // DialogContentText,
   DialogTitle,
   IconButton,
   TextField,
   Tooltip,
 } from "@material-ui/core/";
+
+import Moment from "react-moment";
 
 import EditIcon from "@material-ui/icons/Edit";
 const useStyles = makeStyles((theme) => ({
@@ -20,32 +22,64 @@ const useStyles = makeStyles((theme) => ({
     margin: 10,
   },
 }));
-function AlertUpdate({ rowID }) {
+function AlertUpdate({
+  rowID,
+  firstName,
+  lastName,
+  age,
+  location,
+  email,
+  phoneNumber,
+  title,
+  manager,
+  salary,
+  hireDate,
+}) {
   const [employeeList, setEmployeeList] = useContext(EmployeeContext);
-  const [newSalary, setNewSalary] = useState(0);
+  const [newFirstName, setNewFirstName] = useState(firstName);
+  const [newLastName, setNewLastName] = useState(lastName);
+  const [newAge, setNewAge] = useState(age);
+  const [newLocation, setNewLocation] = useState(location);
+  const [newEmail, setNewEmail] = useState(email);
+  const [newPhoneNumber, setNewPhoneNumber] = useState(phoneNumber);
+  const [newTitle, setNewTitle] = useState(title);
+  const [newManager, setNewManager] = useState(manager);
+  const [newSalary, setNewSalary] = useState(salary);
+  const [newHireDate, setNewHireDate] = useState(
+    <Moment format="YYYY-MM-DD">hireDate</Moment>
+  );
 
   const [open, setOpen] = useState(false);
 
-  const updateEmployeeSalary = (id) => {
+  const updateEmployee = (id) => {
     Axios.put("http://localhost:3001/employees/update", {
-      salary: newSalary,
       id: id,
+      first_name: newFirstName,
+      last_name: newLastName,
+      age: newAge,
+      location: newLocation,
+      email: newEmail,
+      phone_number: newPhoneNumber,
+      title: newTitle,
+      manager: newManager,
+      salary: newSalary,
+      hire_date: newHireDate,
     }).then((response) => {
       setEmployeeList(
         employeeList.map((employee) => {
           return employee.id == id
             ? {
                 id: employee.id,
-                first_name: employee.first_name,
-                last_name: employee.last_name,
-                age: employee.age,
-                location: employee.location,
-                email: employee.email,
-                phone_number: employee.phone_number,
-                title: employee.title,
-                manager: employee.manager,
+                first_name: newFirstName,
+                last_name: newLastName,
+                age: newAge,
+                location: newLocation,
+                email: newEmail,
+                phone_number: newPhoneNumber,
+                title: newTitle,
+                manager: newManager,
                 salary: newSalary,
-                hire_date: employee.hire_date,
+                hire_date: newHireDate,
               }
             : employee;
         })
@@ -97,7 +131,7 @@ function AlertUpdate({ rowID }) {
             variant="outlined"
             size="small"
             onChange={(event) => {
-              setNewSalary(event.target.value);
+              setNewFirstName(event.target.value);
             }}
             className={classes.textfield}
           />
@@ -108,7 +142,7 @@ function AlertUpdate({ rowID }) {
             variant="outlined"
             size="small"
             onChange={(event) => {
-              setNewSalary(event.target.value);
+              setNewLastName(event.target.value);
             }}
             className={classes.textfield}
           />
@@ -120,7 +154,7 @@ function AlertUpdate({ rowID }) {
             variant="outlined"
             size="small"
             onChange={(event) => {
-              setNewSalary(event.target.value);
+              setNewAge(event.target.value);
             }}
             className={classes.textfield}
           />
@@ -131,7 +165,7 @@ function AlertUpdate({ rowID }) {
             variant="outlined"
             size="small"
             onChange={(event) => {
-              setNewSalary(event.target.value);
+              setNewLocation(event.target.value);
             }}
             className={classes.textfield}
           />
@@ -142,7 +176,7 @@ function AlertUpdate({ rowID }) {
             variant="outlined"
             size="small"
             onChange={(event) => {
-              setNewSalary(event.target.value);
+              setNewEmail(event.target.value);
             }}
             className={classes.textfield}
           />
@@ -153,7 +187,7 @@ function AlertUpdate({ rowID }) {
             variant="outlined"
             size="small"
             onChange={(event) => {
-              setNewSalary(event.target.value);
+              setNewPhoneNumber(event.target.value);
             }}
             className={classes.textfield}
           />
@@ -164,7 +198,7 @@ function AlertUpdate({ rowID }) {
             variant="outlined"
             size="small"
             onChange={(event) => {
-              setNewSalary(event.target.value);
+              setNewTitle(event.target.value);
             }}
             className={classes.textfield}
           />
@@ -175,7 +209,7 @@ function AlertUpdate({ rowID }) {
             variant="outlined"
             size="small"
             onChange={(event) => {
-              setNewSalary(event.target.value);
+              setNewManager(event.target.value);
             }}
             className={classes.textfield}
           />
@@ -191,16 +225,18 @@ function AlertUpdate({ rowID }) {
             }}
             className={classes.textfield}
           />
+
+          {/* TODOS - FIX INCORRECT DATE VALUE */}
           <TextField
             required
             id="filled-required-hiredate"
             label="Hire Date"
             type="date"
             variant="outlined"
-            defaultValue="2021-01-01"
+            defaultValue={"2021-01-01"}
             size="small"
             onChange={(event) => {
-              setNewSalary(event.target.value);
+              setNewHireDate(event.target.value);
             }}
             className={classes.textfield}
           />
@@ -211,7 +247,7 @@ function AlertUpdate({ rowID }) {
           </Button>
           <Button
             onClick={() => {
-              updateEmployeeSalary(rowID);
+              updateEmployee(rowID);
               handleClose();
             }}
             color="secondary"
